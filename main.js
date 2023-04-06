@@ -65,7 +65,6 @@ newGame.addEventListener('click',loadSecondPage);
 function loadImage(input,profile,label){
   let imageSrc = input[0];
   profile.classList.add('show');
-  label.classList.add('hide');
   profile.src = URL.createObjectURL(imageSrc);
 }
 
@@ -92,7 +91,7 @@ namesForm.addEventListener('submit', (e) => {
 });
 /* ============================================================================= */
 
-/* ============================ ThirdPage functions ================================================= */
+/* ============================ LastPage functions ================================================= */
 function loadLastPage(){
   secondPage.classList.remove('show');
   loader.classList.add('show');

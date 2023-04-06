@@ -189,6 +189,12 @@ img.show{
 .second-page.start-up .players-container .player .image-container{
   width: 50px;
   height: 50px;
+  position: relative;
+}
+.second-page.start-up .players-container .player .image-container img{
+  position: absolute;
+  inset:0;
+  pointer-events: none;
 }
 .second-page.start-up .players-container .player .image-container .image-input{
   display: none;
@@ -201,9 +207,6 @@ img.show{
   font-size: 2.6rem;
   cursor: pointer;
   color: var(--theme-2);
-}
-.second-page.start-up .players-container .player .image-container label.hide{
-  display: none;
 }
 
 .second-page.start-up .player input.name-input{
@@ -311,6 +314,7 @@ img.show{
   padding: .2rem .4rem;
   background-color: #e2e074;
   border-radius: .2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   letter-spacing: 1.5px;
 }
