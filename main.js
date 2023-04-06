@@ -62,18 +62,18 @@ newGame.addEventListener('click',loadSecondPage);
 
 /* ======================= Form functions ============================== */
 
-function loadImage(input,profile,label){
+function loadImage(input,profile){
   let imageSrc = input[0];
   profile.classList.add('show');
   profile.src = URL.createObjectURL(imageSrc);
 }
 
 firstPlayerImageInput.addEventListener('change',() => {
-  loadImage(firstPlayerImageInput.files,firstPlayerProfile,firstPlayerImageLabel);
+  loadImage(firstPlayerImageInput.files,firstPlayerProfile);
 });
 
 secondPlayerImageInput.addEventListener('change', () => {
-  loadImage(secondPlayerImageInput.files,secondPlayerProfile,secondPlayerImageLabel);
+  loadImage(secondPlayerImageInput.files,secondPlayerProfile);
 });
 
 function assignPlayerDetails(firstImg,firstName,secondImg,secondName){
