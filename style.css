@@ -44,14 +44,58 @@ img.show{
   font-weight: bold;
   color: var(--black);
 }
+.first-page.home.show,
+.second-page.start-up.show,
+.last-page.play-ground.show {
+  display: flex;
+}
+
+.loader-container{
+  position: absolute;
+  inset:0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem; 
+  background: var(--theme-1);
+}
+.loader-container.show{
+  display: flex;
+}
+.loader-container .stick{
+  height: 60px;
+  width: 10px;
+  background: var(--theme-2);
+  border-radius: .2rem;
+  animation: stretch 1s linear infinite alternate;
+  animation-delay: .1s; 
+}
+.loader-container .stick:nth-child(2){
+  animation-delay: .3s; 
+}
+.loader-container .stick:nth-child(3) {
+  animation-delay: .5s;
+}.loader-container .stick:nth-child(4) {
+  animation-delay: .7s;
+}
+@keyframes stretch{
+  0%,100%{
+    transform: translateY(-50%);
+  }
+  50%{
+    transform: translateY(50%);
+  }
+}
+
+
+
+
+
+
 
 .first-page.home{
   display: none;
 }
-.first-page.home.show{
-  display: flex;
-}
-
 .first-page.home main{
   display: flex;
   flex-direction: column;
@@ -120,9 +164,6 @@ img.show{
 .second-page.start-up{
   gap: 2rem;
   display: none;
-}
-.second-page.start-up.show{
-  display: flex;
 }
 .second-page.start-up form,
 .second-page.start-up .button-container{
@@ -205,9 +246,7 @@ img.show{
   padding: 0rem;
   background-color: transparent;
 }
-.last-page.play-ground.show{
-  display: flex;
-}
+  
 .last-page.play-ground .whole-game-container{
   display: flex;
   flex-direction: column;
