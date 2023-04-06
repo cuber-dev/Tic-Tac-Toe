@@ -58,6 +58,7 @@ let globalSecondPlayerProfileSrc = '';
 /* =========================  Second page loader ============================== */
 function loadSecondPage(){
   firstPage.classList.remove('show');
+  lastPage.classList.remove('show');
   loader.classList.add('show');
   secondPage.classList.add('show');
   setTimeout(() => {
@@ -103,6 +104,7 @@ namesForm.addEventListener('submit', (e) => {
 /* ============================ LastPage functions ================================================= */
 function loadLastPage(){
   secondPage.classList.remove('show');
+  firstPage.classList.remove('show');
   loader.classList.add('show');
   lastPage.classList.add('show');
   setTimeout(() => {
@@ -237,6 +239,9 @@ function checkIds(e){
       case 'edit':
         loadDynamicPage(secondPage);
         break;
+      case 'scores':
+        loadDynamicPage('scores-page');
+        break;
       case 'reset':
         resetGame();
         break;
@@ -258,10 +263,10 @@ document.addEventListener('click',checkNotNavClick);
 /* ============================================================================= */
 
 
-function loadDeafultPage(){
+function loadDefaultPage(){
   firstPage.classList.add('show');
 }
 
 window.addEventListener('load',() => {
-  loadDeafultPage();
+  loadDefaultPage();
 });
