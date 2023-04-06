@@ -173,9 +173,11 @@ function checkMatchof(i,j,k){
 }
 
 function checkForTie(){
-  boardTiles.forEach(tile => {
-    if(!tile.classList.contains('active')) return false;
-  });
+  for(let i = 0; i < boardTiles.length; i++){
+    if(!boardTiles[i].classList.contains('active')){
+      return false;
+    }
+  }
   return true;
 }
 
