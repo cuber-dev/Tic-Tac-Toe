@@ -25,16 +25,18 @@ const formSubmitBtn = document.querySelector('#start-game');
 
 // Last page elements 
 const lastPage = document.querySelector('.last-page');
+const playerContainer1 = document.querySelector('.player-display');
 const playerProfile1 = document.querySelector('#player-profile-1');
 const playerName1 = document.querySelector('#player-name-1');
 
+const playerContainer2 = document.querySelector('.player-display.player-2');
 const playerProfile2 = document.querySelector('#player-profile-2');
 const playerName2 = document.querySelector('#player-name-2');
 
 const playerTurnIndicator = document.querySelector('#player-turn-display');
-const borderTiles = document.querySelectorAll('.tile');
+const boardTiles = Array.from(document.querySelectorAll('.tile'));
 /* ========================= Global variables ============================== */
-let currentPlayer = 'X';
+let currentPlayerSymbol = 'X';
 let globalFirstPlayerName = '';
 let globalFirstPlayerProfileSrc = '';
 
@@ -113,5 +115,28 @@ function setGamePlayerDetails(){
   playerName2.innerText = globalSecondPlayerName;
 }
 
+/* ==========================  Game functions =================================================== */
+
+function handleTile(tile,symbol){
+  if(!tile.classList.contains('active')){
+    tile.classList.add('active');
+    tile.innerText = symbol;
+    /*if(checkForWin()){
+      alert(currentPlayerSymbol,'wins');
+    }else if(checkForTie()){
+      alert("tie");
+    }else{
+    }*/
+    currentPlayerSymbol = symbol === 'X' ? 'O' : 'X';
+    playerTurnIndicator.innerText = currentPlayerSymbol + '-Turn';
+
+  }
+}
+
+boardTiles.forEach(tile => {
+  tile.addEventListener('click',() => {
+    handleTile(tile,currentPlayerSymbol);
+  });
+});
 
 /* ============================================================================= */
