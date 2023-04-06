@@ -272,7 +272,6 @@ img.show{
 .last-page.play-ground .players-display-container .player-display{
   display: flex;
   flex-direction: row;
-  justify-content: start;
   align-items: center;
   gap: .5rem;
   padding: .2rem;
@@ -299,6 +298,9 @@ img.show{
   color: white;
   width: 100%;
   overflow: scroll;
+}
+.last-page.play-ground .players-display-container.player-2 .player-display .player-names{
+  text-align: end;
 }
 
 .last-page.play-ground .whole-game-container .player-turn-display-container{
