@@ -26,11 +26,9 @@ const formSubmitBtn = document.querySelector('#start-game');
 // Last page elements 
 const lastPage = document.querySelector('.last-page');
 const playerProfile1 = document.querySelector('#player-profile-1');
-const playerLabel1 = document.querySelector('#player-name-1');
 const playerName1 = document.querySelector('#player-name-1');
 
 const playerProfile2 = document.querySelector('#player-profile-2');
-const playerLabel2 = document.querySelector('#player-name-2');
 const playerName2 = document.querySelector('#player-name-2');
 
 const playerTurnIndicator = document.querySelector('#player-turn-display');
@@ -107,12 +105,10 @@ function setGamePlayerDetails(){
   if(globalFirstPlayerProfileSrc){
     playerProfile1.src = globalFirstPlayerProfileSrc;
     playerProfile1.classList.add('show');
-    playerLabel1.classList.add('hide');
   } 
   if(globalSecondPlayerProfileSrc){
     playerProfile2.src = globalSecondPlayerProfileSrc;
     playerProfile2.classList.add('show');
-    playerLabel2.classList.add('hide');
   }
   
   playerName1.innerText = globalFirstPlayerName;
