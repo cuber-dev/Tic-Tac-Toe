@@ -106,10 +106,12 @@ function loadLastPage(){
 function setGamePlayerDetails(){
   if(globalFirstPlayerProfileSrc){
     playerProfile1.src = globalFirstPlayerProfileSrc;
+    playerProfile1.classList.add('show');
     playerLabel1.classList.add('hide');
   } 
   if(globalSecondPlayerProfileSrc){
     playerProfile2.src = globalSecondPlayerProfileSrc;
+    playerProfile2.classList.add('show');
     playerLabel2.classList.add('hide');
   }
   
