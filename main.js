@@ -5,7 +5,7 @@ const loader = document.querySelector('.loader-container');
 const firstPage = document.querySelector('.first-page');
 const newGame = document.querySelector('#new-game');
 const scores = document.querySelector('#scores');
-/* ======================================================= */
+/* ============================================================================= */
 
 // Second page elements
 const secondPage = document.querySelector('.second-page');
@@ -21,8 +21,34 @@ const secondPlayerImageLabel = document.querySelector('#player-image-label-2');
 const secondPlayerNameInput = document.querySelector('#player-name-input-2');
 
 const formSubmitBtn = document.querySelector('#start-game');
-/* ======================================================= */
-function showSecondPage(){
+/* ============================================================================= */
+
+// Last page elements 
+const lastPage = document.querySelector('.last-page');
+const playerProfile1 = document.querySelector('#player-profile-1');
+const playerLabel1 = document.querySelector('#player-name-1');
+const playerName1 = document.querySelector('#player-name-1');
+
+const playerProfile2 = document.querySelector('#player-profile-2');
+const playerLabel2 = document.querySelector('#player-name-2');
+const playerName2 = document.querySelector('#player-name-2');
+
+const playerTurnIndicator = document.querySelector('#player-turn-display');
+/* ========================= Global variables ============================== */
+currentPlayer = 'X';
+globalFirstPlayerName = '';
+globalFirstPlayerProfileSrc = '';
+
+globalSecondPlayerName = '';
+globalSecondPlayerProfileSrc = '';
+
+/* ============================================================================= */
+
+
+
+
+/* =========================  Second page loader ============================== */
+function loadSecondPage(){
   firstPage.classList.remove('show');
   loader.classList.add('show');
   secondPage.classList.add('show');
@@ -31,11 +57,10 @@ function showSecondPage(){
   }, 1000 * 3);
 }
 
-newGame.addEventListener('click',showSecondPage);
+newGame.addEventListener('click',loadSecondPage);
+/* ============================================================================= */
 
-namesForm.addEventListener('submit',(e) => {
-  e.preventDefault();
-});
+/* ======================= Form functions ============================== */
 
 function loadImage(input,profile,label){
   let imageSrc = input[0];
@@ -51,3 +76,46 @@ firstPlayerImageInput.addEventListener('change',() => {
 secondPlayerImageInput.addEventListener('change', () => {
   loadImage(secondPlayerImageInput.files,secondPlayerProfile,secondPlayerImageLabel);
 });
+
+function assignPlayerDetails(firstImg,firstName,secondImg,secondName){
+  globalFirstPlayerProfileSrc = firstImg;
+  globalFirstPlayerName = firstName;
+  
+  globalSecondPlayerProfileSrc = secondImg;
+  globalSecondPlayerName = secondName;
+}
+
+namesForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  assignPlayerDetails(firstPlayerProfile.src,firstPlayerNameInput.value,secondPlayerProfile.src,secondPlayerNameInput.value);
+  loadLastPage();
+});
+/* ============================================================================= */
+
+/* ============================ ThirdPage functions ================================================= */
+function loadLastPage(){
+  secondPage.classList.remove('show');
+  loader.classList.add('show');
+  lastPage.classList.add('show');
+  setTimeout(() => {
+    loader.classList.remove('show');
+  }, 1000 * 3);
+  setGamePlayerDetails();
+}
+
+function setGamePlayerDetails(){
+  if(globalFirstPlayerProfileSrc){
+    playerProfile1.src = globalFirstPlayerProfileSrc;
+    playerLabel1.classList.add('hide');
+  } 
+  if(globalSecondPlayerProfileSrc){
+    playerProfile2.src = globalSecondPlayerProfileSrc;
+    playerLabel2.classList.add('hide');
+  }
+  
+  playerName1.innerText = globalFirstPlayerName;
+  playerName2.innerText = globalSecondPlayerName;
+}
+
+
+/* ============================================================================= */
