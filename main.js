@@ -119,20 +119,76 @@ function setGamePlayerDetails(){
 
 function handleTile(tile,symbol){
   if(!tile.classList.contains('active')){
+
     tile.classList.add('active');
     tile.innerText = symbol;
-    /*if(checkForWin()){
+   
+    if(checkForWin()){
       alert(currentPlayerSymbol,'wins');
+      setTimeout(() => {
+        resetGame();
+      },1000);
+      return '';
     }else if(checkForTie()){
       alert("tie");
-    }else{
-    }*/
+      setTimeout(() => {
+        resetGame();
+      },1000);
+      return '';
+    }
+   
     currentPlayerSymbol = symbol === 'X' ? 'O' : 'X';
+   
+    if(currentPlayerSymbol === 'X'){
+     playerContainer1.classList.add('active');
+     playerContainer2.classList.remove('active');
+    } 
+    else {
+     playerContainer2.classList.add('active');
+     playerContainer1.classList.remove('active');
+    }
+    
     playerTurnIndicator.innerText = currentPlayerSymbol + '-Turn';
-
+  }
+}
+function checkForWin(){
+  return checkRows() || checkColumns() || checkDiagnols();
+}
+function checkRows(){
+  for(let index = 1; index <= 9 ; index += 3){
+    if(checkMatchof(index,index + 1, index + 2)) return true;
+  }
+}
+function checkColumns(){
+  for(let index = 1; index <= 3 ; index++){
+    if(checkMatchof(index,index + 3, index + 6)) return true;
   }
 }
 
+function checkDiagnols(){
+   return checkMatchof(1,5,9) || checkMatchof(3,5,7);
+}
+function checkMatchof(i,j,k){
+  return boardTiles[i-1].innerText === currentPlayerSymbol && boardTiles[j-1].innerText === currentPlayerSymbol && boardTiles[k-1].innerText === currentPlayerSymbol;
+}
+
+function checkForTie(){
+  boardTiles.forEach(tile => {
+    if(!tile.classList.contains('active')) return false;
+  });
+  return true;
+}
+
+function resetGame(){
+  boardTiles.forEach(tile => {
+    tile.classList.remove('active');
+    tile.innerText = '';
+  });
+  currentPlayerSymbol = 'X';
+  playerTurnIndicator.innerText = currentPlayerSymbol + '-Turn';
+  playerContainer1.classList.add('active');
+  playerContainer2.classList.remove('active');
+}
 boardTiles.forEach(tile => {
   tile.addEventListener('click',() => {
     handleTile(tile,currentPlayerSymbol);
