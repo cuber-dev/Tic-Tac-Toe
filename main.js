@@ -70,6 +70,8 @@ newGame.addEventListener('click',loadSecondPage);
 /* ======================= Form functions ============================== */
 
 function loadImage(input,profile){
+  if(!input) return;
+
   let imageSrc = input[0];
   profile.classList.add('show');
   profile.src = URL.createObjectURL(imageSrc);
@@ -110,10 +112,10 @@ function loadLastPage(){
 }
 
 function setGamePlayerDetails(){
-  if(globalFirstPlayerProfileSrc !== ''){
+  if(!globalFirstPlayerProfileSrc.includes('index.htm')){
     playerProfile1.src = globalFirstPlayerProfileSrc;
   } 
-  if(globalSecondPlayerProfileSrc !== ''){
+  if(!globalSecondPlayerProfileSrc.includes('index.htm')){
     playerProfile2.src = globalSecondPlayerProfileSrc;
   }
   
@@ -208,16 +210,51 @@ boardTiles.forEach(tile => {
 function openNavBar(){
   navBar.classList.add('show');
 }
-navOpenBtn.addEventListener('click',() => {
-  openNavBar();
-});
+navOpenBtn.addEventListener('click',openNavBar);
 
 function closeNavBar() {
   navBar.classList.remove('show');
 }
-navCloseBtn.addEventListener('click', () => {
-  closeNavBar();
-});
+navCloseBtn.addEventListener('click',closeNavBar);
+
+
+function loadDynamicPage(page){
+    page.classList.add('show');
+    loader.classList.add('show');
+    lastPage.classList.remove('show');
+    setTimeout(() => {
+      loader.classList.remove('show');
+    }, 1000 * 3);
+}
+
+function checkIds(e){
+  let children = e.target;
+  if(children.matches('li')){
+    switch(children.id){
+      case 'home':
+        loadDynamicPage(firstPage);
+        break;
+      case 'edit':
+        loadDynamicPage(secondPage);
+        break;
+      case 'reset':
+        resetGame();
+        break;
+      default :
+        return;
+    }
+  }
+}
+navBar.addEventListener('click',checkIds);
+
+
+function checkNotNavClick(e){
+  let children = e.target;
+  if(!children.matches('nav') && !children.matches('i')){
+    navBar.classList.remove('show');
+  }
+}
+document.addEventListener('click',checkNotNavClick);
 /* ============================================================================= */
 
 
