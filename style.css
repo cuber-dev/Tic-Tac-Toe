@@ -59,7 +59,7 @@ img.show{
   justify-content: center;
   align-items: center;
   gap: 1rem; 
-  background: var(--theme-1);
+  background: #2A8B7F;
   z-index: 25;
 }
 .loader-container.show{
