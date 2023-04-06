@@ -290,19 +290,11 @@ img.show{
   width: 50px;
   height: 50px;
 } 
-.last-page.play-ground .players-display-container .player-display .image-container .player-labels{
-  font-size: 1.8rem;
-  padding: .1rem .5rem;
-  border-radius: .3rem;
-  color: var(--theme-2);
-  background-color: #549b89;
-}
-.last-page.play-ground .players-display-container .player-display .image-container .player-labels.hide{
-  display: none;
-}
+
 .last-page.play-ground .players-display-container .player-display .player-names{
   padding: .1rem;
   text-transform: capitalize;
+  color: white;
 }
 
 .last-page.play-ground .whole-game-container .player-turn-display-container{

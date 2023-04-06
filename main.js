@@ -56,7 +56,6 @@ function loadSecondPage(){
 }
 
 newGame.addEventListener('click',loadSecondPage);
-/* ============================================================================= */
 
 /* ======================= Form functions ============================== */
 
@@ -102,13 +101,11 @@ function loadLastPage(){
 }
 
 function setGamePlayerDetails(){
-  if(globalFirstPlayerProfileSrc){
-    playerProfile1.src = globalFirstPlayerProfileSrc;
-    playerProfile1.classList.add('show');
+  if(globalFirstPlayerProfileSrc !== ''){
+    //playerProfile1.src = globalFirstPlayerProfileSrc;
   } 
-  if(globalSecondPlayerProfileSrc){
-    playerProfile2.src = globalSecondPlayerProfileSrc;
-    playerProfile2.classList.add('show');
+  if(globalSecondPlayerProfileSrc !== ''){
+    //playerProfile2.src = globalSecondPlayerProfileSrc;
   }
   
   playerName1.innerText = globalFirstPlayerName;
