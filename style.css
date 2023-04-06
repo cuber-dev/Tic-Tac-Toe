@@ -258,28 +258,30 @@ img.show{
   justify-content: center;
   align-items: center;
   padding: 1rem 0;
-  gap: .5rem;
+  gap: 1.5rem;
   border-top: 2px solid var(--theme-3);
+  width: 100%;
 }
 .last-page.play-ground .whole-game-container .players-display-container{
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   gap: 3.8rem;
 }
 .last-page.play-ground .players-display-container .player-display{
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   gap: .5rem;
   padding: .2rem;
   border-radius: .3rem;
+  width:100%;
 }
-
-.last-page.play-ground .players-display-container .player-display:last-child{
+.last-page.play-ground .players-display-container.player-2 .player-display{
   flex-direction: row-reverse;
+  justify-content: end;
 }
 
 .last-page.play-ground .players-display-container .player-display.active{
@@ -295,6 +297,8 @@ img.show{
   padding: .1rem;
   text-transform: capitalize;
   color: white;
+  width: 100%;
+  overflow: scroll;
 }
 
 .last-page.play-ground .whole-game-container .player-turn-display-container{
@@ -316,7 +320,7 @@ img.show{
   row-gap: .7rem;
   grid-template-columns: repeat(3,1fr);
   width: 100%;
-  margin-top: 2rem;
+  margin:0;
 }
 .last-page.play-ground .whole-game-container .board-container .tile{
   display: flex;
@@ -398,10 +402,8 @@ img.show{
 
 
 @media (max-width:456px){
-  .second-page.start-up{
+  .second-page.start-up,
+  .last-page.play-ground{
     width: 90%;
-  }
-  .last-page.play-ground .whole-game-container .board-container{
-    margin-top: 4rem; 
   }
 }

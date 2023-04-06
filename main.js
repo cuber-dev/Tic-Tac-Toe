@@ -33,12 +33,12 @@ const playerName2 = document.querySelector('#player-name-2');
 
 const playerTurnIndicator = document.querySelector('#player-turn-display');
 /* ========================= Global variables ============================== */
-currentPlayer = 'X';
-globalFirstPlayerName = '';
-globalFirstPlayerProfileSrc = '';
+let currentPlayer = 'X';
+let globalFirstPlayerName = '';
+let globalFirstPlayerProfileSrc = '';
 
-globalSecondPlayerName = '';
-globalSecondPlayerProfileSrc = '';
+let globalSecondPlayerName = '';
+let globalSecondPlayerProfileSrc = '';
 
 /* ============================================================================= */
 
@@ -102,10 +102,10 @@ function loadLastPage(){
 
 function setGamePlayerDetails(){
   if(globalFirstPlayerProfileSrc !== ''){
-    //playerProfile1.src = globalFirstPlayerProfileSrc;
+    playerProfile1.src = globalFirstPlayerProfileSrc;
   } 
   if(globalSecondPlayerProfileSrc !== ''){
-    //playerProfile2.src = globalSecondPlayerProfileSrc;
+    playerProfile2.src = globalSecondPlayerProfileSrc;
   }
   
   playerName1.innerText = globalFirstPlayerName;
