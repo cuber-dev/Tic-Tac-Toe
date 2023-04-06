@@ -35,6 +35,13 @@ const playerName2 = document.querySelector('#player-name-2');
 
 const playerTurnIndicator = document.querySelector('#player-turn-display');
 const boardTiles = Array.from(document.querySelectorAll('.tile'));
+
+const navOpenBtn = document.querySelector('#nav-btn');
+const navBar = document.querySelector('.nav-bar');
+const navCloseBtn = document.querySelector('#back-nav-btn');
+const navOptions = document.querySelectorAll('.nav-bar ul li');
+/* ============================================================================= */
+
 /* ========================= Global variables ============================== */
 let currentPlayerSymbol = 'X';
 let globalFirstPlayerName = '';
@@ -196,4 +203,28 @@ boardTiles.forEach(tile => {
   });
 });
 
+
+/* ================================== NavBar functions ========================================== */
+function openNavBar(){
+  navBar.classList.add('show');
+}
+navOpenBtn.addEventListener('click',() => {
+  openNavBar();
+});
+
+function closeNavBar() {
+  navBar.classList.remove('show');
+}
+navCloseBtn.addEventListener('click', () => {
+  closeNavBar();
+});
 /* ============================================================================= */
+
+
+function loadDeafultPage(){
+  //firstName.classList.add('show');
+}
+
+window.addEventListener('load',() => {
+  loadDeafultPage();
+});

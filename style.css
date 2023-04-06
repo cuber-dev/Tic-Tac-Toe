@@ -347,7 +347,7 @@ img.show{
   background-color: var(--active);
 }
 
-.last-page.play-ground #back-menu{
+.last-page.play-ground #nav-btn{
   position: absolute;
   top: 1rem;
   left: .5rem;
@@ -357,7 +357,6 @@ img.show{
   cursor: pointer;
 }
 .last-page.play-ground .nav-bar{
-  display: none;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -366,9 +365,14 @@ img.show{
   width: 60%;
   text-align: end;
   background-color: var(--theme-1);
+  opacity: 0;
+  z-index: 22;
+  pointer-events: none;
+  transition: all 200ms ease;
 }
 .last-page.play-ground .nav-bar.show{
-  display: block;
+  pointer-events: visible;
+  opacity: 1;
 }
 .last-page.play-ground .nav-bar #back-nav-btn{
   display: inline-block;
