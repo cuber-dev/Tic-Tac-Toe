@@ -33,30 +33,30 @@
     </main>
   </section>
 
-  <section class="second-page start-up container">
+  <section class="second-page start-up container show">
     <header>Players</header>
 
-    <form>
+    <form id="name-form">
       <div class="players-container">
       
         <div class="player">
          <div class="image-container">
-          <label for="player-image-input-1"><i class="fa-solid fa-camera-retro image-icon"></i> </label>
+          <label id="player-image-label-1" for="player-image-input-1"><i class="fa-solid fa-camera-retro image-icon"></i> </label>
           <img src="" class="player-images" id="player-image-1" alt="">
           <input type="file" class="image-input" id="player-image-input-1">
          </div>
         
-         <input autofocus required type="text" class="name-input" placeholder="Player-1 of X" class="player-names" id="player-name-input-1">
+         <input autofocus required type="text" class="name-input" placeholder="Player-1 name of X" class="player-names" id="player-name-input-1">
         </div>
         
         <div class="player">
           <div class="image-container">
-           <label for="player-image-input-2"><i class="fa-solid fa-camera-retro image-icon"></i> </label>
+           <label id="player-image-label-2" for="player-image-input-2"><i class="fa-solid fa-camera-retro image-icon"></i> </label>
            <img src="" class="player-images" id="player-image-2" alt="">
            <input type="file" class="image-input" id="player-image-input-2">
           </div>
          
-          <input autofocus required type="text" class="name-input" placeholder="Player-2 of O" class="player-names" id="player-name-input-2">
+          <input autofocus required type="text" class="name-input" placeholder="Player-2 name of O" class="player-names" id="player-name-input-2">
          </div>
     
         </div>
@@ -68,7 +68,7 @@
 
 </section>
 
-  <section class="last-page play-ground container show">
+  <section class="last-page play-ground container">
     <header>Tic Tac Toe</header>
     <span id="back-menu"><i class="fa-solid fa-bars icon"></i> </span>
     <nav class="nav-bar">
