@@ -186,6 +186,10 @@ img.show{
   flex-direction: column;
   gap: .5rem;
 }
+.second-page.start-up .players-container .player .image-container{
+  width: 50px;
+  height: 50px;
+}
 .second-page.start-up .players-container .player .image-container .image-input{
   display: none;
 }
