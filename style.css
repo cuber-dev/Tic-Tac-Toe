@@ -171,6 +171,7 @@ img.show{
   flex-direction: column;
   justify-content: space-between;
   gap: 4rem;
+  width: 100%;
 }
 .second-page.start-up .players-container{
   display: flex;
@@ -242,9 +243,8 @@ img.show{
 .last-page.play-ground{
   display: none;
   position: relative;
-  gap: 1.5rem;
-  padding: 0rem;
-  background-color: transparent;
+  padding: 1rem;
+  background-color: var(--theme-1);
 }
   
 .last-page.play-ground .whole-game-container{
@@ -252,14 +252,12 @@ img.show{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: .5rem;
-  background-color: var(--theme-1);
+  padding: 1rem 0;
+  gap: .5rem;
+  border-top: 2px solid var(--theme-3);
 }
 .last-page.play-ground .whole-game-container .players-display-container{
   display: flex;
-  padding: .1rem;
   width: 100%;
   justify-content: space-between;
   align-items: center;
@@ -316,8 +314,8 @@ img.show{
 
 .last-page.play-ground .whole-game-container .board-container{
   display: grid;
-  column-gap: .5rem;
-  row-gap: .5rem;
+  column-gap: .7rem;
+  row-gap: .7rem;
   grid-template-columns: repeat(3,1fr);
   width: 100%;
   margin-top: 2rem;
@@ -329,7 +327,7 @@ img.show{
   padding: 1.3rem;
   background-color:rgb(63, 155, 124);
   border-radius: .3rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--white);
   box-shadow:  3px 3px 10px rgba(75, 155, 128, 0.5),
               -3px -3px 10px rgba(90, 207, 168, 0.5);
@@ -342,8 +340,8 @@ img.show{
 
 .last-page.play-ground #back-menu{
   position: absolute;
-  top: 0rem;
-  left: 0;
+  top: 1rem;
+  left: .5rem;
   padding: .4rem;
   border-radius: .2rem;
   background-color: var(--theme-1);
@@ -393,4 +391,19 @@ img.show{
 }
 .last-page.play-ground .nav-bar ul li:hover{
   background-color: var(--active);
+}
+
+
+
+
+
+
+
+@media (max-width:456px){
+  .second-page.start-up{
+    width: 90%;
+  }
+  .last-page.play-ground .whole-game-container .board-container{
+    margin-top: 4rem; 
+  }
 }
