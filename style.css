@@ -328,7 +328,8 @@ img.show{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.3rem;
+  width: 85px;
+  height:85px;
   background-color:rgb(63, 155, 124);
   border-radius: .3rem;
   font-size: 1.6rem;

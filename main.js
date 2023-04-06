@@ -32,6 +32,7 @@ const playerProfile2 = document.querySelector('#player-profile-2');
 const playerName2 = document.querySelector('#player-name-2');
 
 const playerTurnIndicator = document.querySelector('#player-turn-display');
+const borderTiles = document.querySelectorAll('.tile');
 /* ========================= Global variables ============================== */
 let currentPlayer = 'X';
 let globalFirstPlayerName = '';
