@@ -3,7 +3,7 @@ body {
    padding: 0;
    margin:0;
    min-height: 100vh;
-   background: #518075;
+   background: #2A8B7F;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -205,11 +205,12 @@ img.show{
 }
 
 .second-page.start-up .players-container .player .image-container label{
-  font-size: 2.6rem;
   cursor: pointer;
   color: var(--theme-2);
 }
-
+.second-page.start-up .players-container .player .image-container label i{
+  font-size: 2.6rem;
+}
 .second-page.start-up .player input.name-input{
   padding: .5rem .7rem;
   font-weight: bold;

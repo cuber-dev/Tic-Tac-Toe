@@ -259,7 +259,7 @@ document.addEventListener('click',checkNotNavClick);
 
 
 function loadDeafultPage(){
-  //firstName.classList.add('show');
+  firstPage.classList.add('show');
 }
 
 window.addEventListener('load',() => {
