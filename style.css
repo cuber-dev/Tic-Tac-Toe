@@ -118,11 +118,12 @@ img.show{
   justify-content: space-between;
   align-items: center;
   gap: .5rem;
+  width: 100%;
 }
 
 .first-page.home main .buttons-container button{
   padding: .7rem;
-  width: 170px;
+  width: 100%;
   border: 2px solid var(--theme-2);
   background-color: transparent;
   border-radius: .3rem;

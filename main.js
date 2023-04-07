@@ -1,5 +1,12 @@
 // Loader
 const loader = document.querySelector('.loader-container');
+function loadLoader(){
+  loader.classList.add('show');
+  setTimeout(() => {
+   loader.classList.remove('show');
+  }, 1000 * 3);
+}
+
 
 // First page elements 
 const firstPage = document.querySelector('.first-page');
@@ -59,11 +66,8 @@ let globalSecondPlayerProfileSrc = '';
 function loadSecondPage(){
   firstPage.classList.remove('show');
   lastPage.classList.remove('show');
-  loader.classList.add('show');
+  loadLoader();
   secondPage.classList.add('show');
-  setTimeout(() => {
-    loader.classList.remove('show');
-  }, 1000 * 3);
 }
 
 newGame.addEventListener('click',loadSecondPage);
@@ -105,11 +109,8 @@ namesForm.addEventListener('submit', (e) => {
 function loadLastPage(){
   secondPage.classList.remove('show');
   firstPage.classList.remove('show');
-  loader.classList.add('show');
+  loadLoader();
   lastPage.classList.add('show');
-  setTimeout(() => {
-    loader.classList.remove('show');
-  }, 1000 * 3);
   setGamePlayerDetails();
 }
 
