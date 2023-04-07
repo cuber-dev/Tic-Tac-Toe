@@ -270,7 +270,7 @@ img.show{
 .last-page.play-ground .whole-game-container{
   display: none;
   flex-direction: column;
-  justify-content:space-between;
+  justify-content:start;
   align-items: center;
   padding: 1rem 0;
   gap: 1.5rem;
@@ -503,7 +503,7 @@ img.show{
   .last-page.play-ground .whole-game-container,
   .last-page.play-ground .match-indicator-container{
     width: 100%;
-    height: 80%;
+    height: 85%;
     padding: 1.5rem 0;
   }
   .last-page.play-ground .match-indicator-container{
