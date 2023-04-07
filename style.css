@@ -295,6 +295,7 @@ img.show{
   align-items: center;
   gap: .5rem;
   padding: .2rem;
+  background-color: #9C9898;
   border-radius: .3rem;
   width:100%;
 }
@@ -304,7 +305,7 @@ img.show{
 }
 
 .last-page.play-ground .players-display-container .player-display.active{
-  background-color: #549b89;
+  background-color: #5D5858;
 }
 
  .last-page.play-ground .players-display-container .player-display .image-container .player-images{
