@@ -300,6 +300,7 @@ img.show{
   padding: .2rem;
   background-color: #2F9C82;
   border-radius: .3rem;
+  color: white;
   width:100%;
   transition: all 200ms linear;
 }
@@ -323,7 +324,6 @@ img.show{
 .last-page.play-ground .players-display-container .player-display .player-names{
   padding: .1rem;
   text-transform: capitalize;
-  color: white;
   font-size: 1.3rem;
   width: 100%;
   overflow: scroll;
