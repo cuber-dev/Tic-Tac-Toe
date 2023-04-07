@@ -194,6 +194,7 @@ function isCurrentPlayer(passedSymbol){
     playerContainer1.classList.remove('active');
    }
    playerTurnIndicator.innerText = passedSymbol + '-Turn';
+   currentPlayerSymbol = passedSymbol;
 }
 function checkForWin(){
   return checkRows() || checkColumns() || checkDiagnols();
@@ -310,9 +311,9 @@ document.addEventListener('click',checkNotNavClick);
 
 
 function loadDefaultPage(){
-  firstPage.classList.add('show');
-  secondPage.classList.remove('show');
-  lastPage.classList.remove('show');
+ // firstPage.classList.add('show');
+//  secondPage.classList.remove('show');
+  lastPage.classList.add('show');
 }
 
 window.addEventListener('load',() => {
