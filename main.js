@@ -65,11 +65,14 @@ let globalSecondPlayerName = '';
 let globalSecondPlayerProfileSrc = '';
 
 let winHeader = 'Congratulations';
+let winPlayerName = '';
+let winPlayerImg = '';
 let winGreetings = 'Congratulations on your victory in this Tic Tac Toe game! You should be proud of yourself for playing strategically and outsmarting your opponent.';
+
 let tieHeader = 'Well Done Guys!';
 let tieName = 'Match tie';
+let tieMatchImg = 'matchTie.png';
 let tieGreetings = ['Well played! It\'s always impressive to see two players evenly matched.','Congratulations on a great game! It\'s amazing how evenly matched you two are.','Wow, what a close match! You both played incredibly well.','That was an exciting game, you both deserve recognition for your skills.','Great effort from both sides! A tie was the perfect result for such a close match.'];
-let tieMatchImg = 'tieMatch.png';
 /* ============================================================================= */
 
 
@@ -150,8 +153,8 @@ function handleTile(tile,symbol){
     if(checkForWin()){
       setTimeout(() => {
         resetGame();
-        let winPlayerImg = symbol === 'X' ? playerProfile1.src : playerProfile2.src;
-        let winPlayerName = symbol === 'X' ? playerName1.innerText : playerName2.innerText;
+        winPlayerImg = symbol === 'X' ? playerProfile1.src : playerProfile2.src;
+        winPlayerName = symbol === 'X' ? playerName1.innerText : playerName2.innerText;
         loadMatchContainer(winHeader,winPlayerImg,winPlayerName,winGreetings);
       },1000);
       return '';
