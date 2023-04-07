@@ -441,7 +441,7 @@ img.show{
   width: 0%;
   opacity: 1;
   background: var(--theme-2);
-  animation: shrink 8s linear 1;
+  animation: shrink 5s linear 1;
 }
 @keyframes shrink{
   from{ 

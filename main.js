@@ -152,14 +152,14 @@ function handleTile(tile,symbol){
         resetGame();
         let winPlayerImg = currentPlayerSymbol === 'X' ? playerProfile1.src : playerProfile2.src;
         let winPlayerName = currentPlayerSymbol === 'X' ? playerName1.innerText : playerName2.innerText;
-        loadMatchContainer(winHeader,winPlayerImg,winPlayerName,winGreetings,8);
+        loadMatchContainer(winHeader,winPlayerImg,winPlayerName,winGreetings);
       },1000);
       return '';
     }else if(checkForTie()){
       alert("tie");
       setTimeout(() => {
         resetGame();
-        loadMatchContainer(tieHeader,tieMatchImg,tieName,tieGreetings[Math.floor(Math.random() * tieGreetings.length)],3);
+        loadMatchContainer(tieHeader,tieMatchImg,tieName,tieGreetings[Math.floor(Math.random() * tieGreetings.length)]);
       },1000);
       return '';
     }
@@ -208,9 +208,11 @@ function checkForTie(){
   return true;
 }
 
-function loadMatchContainer(header,image,name,greetings,delay){
+function loadMatchContainer(header,image,name,greetings){
   matchIndicatorHeader.innerText = header;
   matchPlayerImage.src = image;
+  matchPlayerName.innerText = name;
+  matchPara.innerText = greetings;
 }
 
 function resetGame(){
