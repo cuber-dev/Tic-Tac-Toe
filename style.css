@@ -23,7 +23,7 @@ body {
   scrollbar-color: transparent transparent;
 }
 :root{
-  --theme-1 : #48b198;
+  --theme-1 : #48b198; 
   --theme-2 : #e7e42f;
   --theme-3 : #34554d;
   --white : #fff;
@@ -295,7 +295,7 @@ img.show{
   align-items: center;
   gap: .5rem;
   padding: .2rem;
-  background-color: #9C9898;
+  background-color: #2F9C82;
   border-radius: .3rem;
   width:100%;
 }
@@ -305,7 +305,7 @@ img.show{
 }
 
 .last-page.play-ground .players-display-container .player-display.active{
-  background-color: #5D5858;
+  background-color: #1B624B;
 }
 
  .last-page.play-ground .players-display-container .player-display .image-container .player-images{
