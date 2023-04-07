@@ -63,7 +63,10 @@ img.show{
 
 .loader-container{
   position: absolute;
-  inset:0;
+  top: 0;
+  left:0;
+  height: 100vh;
+  width:100vw;
   display: none;
   justify-content: center;
   align-items: center;
