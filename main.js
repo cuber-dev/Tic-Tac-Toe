@@ -150,8 +150,8 @@ function handleTile(tile,symbol){
     if(checkForWin()){
       setTimeout(() => {
         resetGame();
-        let winPlayerImg = currentPlayerSymbol === 'X' ? playerProfile1.src : playerProfile2.src;
-        let winPlayerName = currentPlayerSymbol === 'X' ? playerName1.innerText : playerName2.innerText;
+        let winPlayerImg = symbol === 'X' ? playerProfile1.src : playerProfile2.src;
+        let winPlayerName = symbol === 'X' ? playerName1.innerText : playerName2.innerText;
         loadMatchContainer(winHeader,winPlayerImg,winPlayerName,winGreetings);
       },1000);
       return '';
@@ -295,8 +295,8 @@ document.addEventListener('click',checkNotNavClick);
 
 
 function loadDefaultPage(){
-  //firstPage.classList.add('show');
- // secondPage.classList.remove('show');
+  /*firstPage.classList.add('show');
+  secondPage.classList.remove('show');*/
   lastPage.classList.add('show');
 }
 
