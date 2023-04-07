@@ -176,7 +176,7 @@ img.show{
 
 .second-page.start-up{
   gap: 2rem;
-  width: 450px;
+  width: 350px;
   display: none;
 }
 .second-page.start-up form,
@@ -218,8 +218,6 @@ img.show{
 .second-page.start-up .players-container .player .image-container label{
   cursor: pointer;
   color: var(--theme-2);
-}
-.second-page.start-up .players-container .player .image-container label i{
   font-size: 2.6rem;
 }
 .second-page.start-up .player input.name-input{

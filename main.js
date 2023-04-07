@@ -98,8 +98,17 @@ function loadImage(input, profile) {
   }
 
   let imageSrc = input[0];
-  profile.classList.add('show');
-  profile.src = URL.createObjectURL(imageSrc);
+  let img = new Image();
+  img.src = URL.createObjectURL(imageSrc);
+  img.onload = () => {
+    profile.src = URL.createObjectURL(imageSrc);
+    profile.classList.add('show');
+    console.log("image checked");
+  };
+  img.onerror = () => {
+    profile.src = 'player.png';
+    profile.classList.add('show');
+  };
 }
 
 firstPlayerImageInput.addEventListener('change',() => {
