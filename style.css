@@ -454,7 +454,7 @@ img.show{
 .last-page.play-ground .match-indicator-container .match-player-img-container{
   width: 50%;
 }
-.last-page.play-ground .match-indicator-container #win-player-name{
+.last-page.play-ground .match-indicator-container #match-player-name{
   background: var(--theme-2);
   padding: .5rem .7rem;
   border-radius: .2rem;

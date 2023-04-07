@@ -52,8 +52,7 @@ const matchIndicatorContainer = document.querySelector('.match-indicator-contain
 const matchIndicatorHeader = document.querySelector('#match-indicator-header');
 const matchPlayerImage = document.querySelector('#match-player-img');
 const matchPara = document.querySelector('#match-para');
-
-const winPlayerName = document.querySelector('#win-player-name');
+const matchPlayerName = document.querySelector('#match-player-name');
 /* ============================================================================= */
 
 /* ========================= Global variables ============================== */
@@ -210,7 +209,8 @@ function checkForTie(){
 }
 
 function loadMatchContainer(header,image,name,greetings,delay){
-  
+  matchIndicatorHeader.innerText = header;
+  matchPlayerImage.src = image;
 }
 
 function resetGame(){
