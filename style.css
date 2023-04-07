@@ -474,7 +474,7 @@ img.show{
   border-radius: .3rem;
 }
 .last-page.play-ground .match-indicator-container .match-player-img-container{
-  width: 50%;
+  width: 30%;
 }
 .last-page.play-ground .match-indicator-container #match-player-name{
   background: var(--theme-2);
