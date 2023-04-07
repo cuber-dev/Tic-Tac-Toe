@@ -265,9 +265,9 @@ document.addEventListener('click',checkNotNavClick);
 
 
 function loadDefaultPage(){
-  firstPage.classList.add('show');
-  secondPage.classList.remove('show');
-  lastPage.classList.remove('show');
+  //firstPage.classList.add('show');
+ // secondPage.classList.remove('show');
+  lastPage.classList.add('show');
 }
 
 window.addEventListener('load',() => {
