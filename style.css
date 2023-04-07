@@ -260,7 +260,7 @@ img.show{
 }
   
 .last-page.play-ground .whole-game-container{
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -269,6 +269,10 @@ img.show{
   border-top: 2px solid var(--theme-3);
   width: 100%;
 }
+.last-page.play-ground .whole-game-container.show{
+  display: flex;
+}
+
 .last-page.play-ground .whole-game-container .players-display-container{
   display: flex;
   width: 100%;
@@ -463,7 +467,7 @@ img.show{
   border-radius: .2rem;
   font-weight: bold;
 }
-.last-page.play-ground .match-indicator-container .para{
+.last-page.play-ground .match-indicator-container #match-para{
   font-size: .8rem;
   opacity: 0.8;
   line-height: 20px;

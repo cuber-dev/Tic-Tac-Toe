@@ -148,7 +148,6 @@ function handleTile(tile,symbol){
     tile.innerText = symbol;
    
     if(checkForWin()){
-      alert(currentPlayerSymbol,'wins');
       setTimeout(() => {
         resetGame();
         let winPlayerImg = currentPlayerSymbol === 'X' ? playerProfile1.src : playerProfile2.src;
@@ -157,7 +156,6 @@ function handleTile(tile,symbol){
       },1000);
       return '';
     }else if(checkForTie()){
-      alert("tie");
       setTimeout(() => {
         resetGame();
         loadMatchContainer(tieHeader,tieMatchImg,tieName,tieGreetings[Math.floor(Math.random() * tieGreetings.length)]);
@@ -220,6 +218,7 @@ function loadMatchContainer(header,image,name,greetings){
   matchIndicatorContainer.classList.add('show');
   setTimeout(() => {
     matchIndicatorContainer.classList.remove('show');
+    wholeGameContainer.classList.add('show');
   },1000 * 5);
 }
 
