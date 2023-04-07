@@ -32,6 +32,7 @@ const formSubmitBtn = document.querySelector('#start-game');
 
 // Last page elements 
 const lastPage = document.querySelector('.last-page');
+const wholeGameContainer = document.querySelector('.whole-game-container');
 const playerContainer1 = document.querySelector('.player-display');
 const playerProfile1 = document.querySelector('#player-profile-1');
 const playerName1 = document.querySelector('#player-name-1');
@@ -209,10 +210,17 @@ function checkForTie(){
 }
 
 function loadMatchContainer(header,image,name,greetings){
+  wholeGameContainer.classList.remove('show');
+
   matchIndicatorHeader.innerText = header;
   matchPlayerImage.src = image;
   matchPlayerName.innerText = name;
   matchPara.innerText = greetings;
+  
+  matchIndicatorContainer.classList.add('show');
+  setTimeout(() => {
+    matchIndicatorContainer.classList.remove('show');
+  },1000 * 5);
 }
 
 function resetGame(){

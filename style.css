@@ -260,7 +260,7 @@ img.show{
 }
   
 .last-page.play-ground .whole-game-container{
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -418,12 +418,15 @@ img.show{
   height: 517px;
   width:100%;
   padding:.5rem;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center ;
   justify-content: start;
   gap: 2rem;
   overflow: scroll;
+}
+.last-page.play-ground .match-indicator-container.show{
+  display: flex;
 }
 .last-page.play-ground .match-indicator-container::before,
 .last-page.play-ground .match-indicator-container::after{
