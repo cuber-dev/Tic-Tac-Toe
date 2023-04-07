@@ -291,11 +291,8 @@ navCloseBtn.addEventListener('click',closeNavBar);
 
 function loadDynamicPage(page){
     page.classList.add('show');
-    loader.classList.add('show');
+    loadLoader(2);
     lastPage.classList.remove('show');
-    setTimeout(() => {
-      loader.classList.remove('show');
-    }, 1000 * 3);
 }
 
 function checkIds(e){
@@ -335,7 +332,7 @@ function loadDefaultPage(){
   lastPage.classList.remove('show');
 }
 
-window.addEventListener('load',() => {
+window.addEventListener('DOMContentLoaded', () => {
   loadDefaultPage();
-  loadLoader(2);
+  loadLoader(5);
 });
