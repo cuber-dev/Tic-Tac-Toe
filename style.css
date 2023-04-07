@@ -276,7 +276,7 @@ img.show{
   flex-direction: column;
   justify-content:space-between;
   align-items: center;
-  padding: 2rem 0;
+  padding: 2.5rem 0 0 0;
   gap: 2rem;
   border-top: 2px solid var(--theme-3);
   width: 100%;
@@ -301,6 +301,7 @@ img.show{
   background-color: #2F9C82;
   border-radius: .3rem;
   width:100%;
+  transition: all 200ms linear;
 }
 .last-page.play-ground .players-display-container.player-2 .player-display{
   flex-direction: row-reverse;
@@ -308,7 +309,7 @@ img.show{
 }
 
 .last-page.play-ground .players-display-container .player-display.active{
-  background-color: #1B624B;
+  background-color: #1D6146;
 }
 
  .last-page.play-ground .players-display-container .player-display .image-container .player-images{
@@ -376,6 +377,8 @@ img.show{
   left: .5rem;
   padding: .4rem;
   border-radius: .2rem;
+  font-size: 1rem;
+  border-color: transparent;
   background-color: var(--theme-1);
   cursor: pointer;
 }
@@ -402,6 +405,8 @@ img.show{
   padding: .3rem .4rem;
   border-radius: .2rem;
   margin-bottom: 2rem;
+  border-color: transparent;
+  background-color: transparent;
   cursor: pointer;
 }
 .last-page.play-ground .nav-bar #back-nav-btn:hover{

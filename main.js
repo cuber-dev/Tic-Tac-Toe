@@ -58,11 +58,11 @@ const matchPlayerName = document.querySelector('#match-player-name');
 
 /* ========================= Global variables ============================== */
 let currentPlayerSymbol = 'X';
-let globalFirstPlayerName = '';
-let globalFirstPlayerProfileSrc = '';
+let globalFirstPlayerName = 'Player-1';
+let globalFirstPlayerProfileSrc = 'player.png';
 
-let globalSecondPlayerName = '';
-let globalSecondPlayerProfileSrc = '';
+let globalSecondPlayerName = 'Player-2';
+let globalSecondPlayerProfileSrc = 'player.png';
 
 let winHeader = 'Congratulations';
 let winPlayerName = '';
