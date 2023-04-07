@@ -90,8 +90,12 @@ newGame.addEventListener('click',loadSecondPage);
 
 /* ======================= Form functions ============================== */
 
-function loadImage(input,profile){
-  if(!input) return;
+function loadImage(input, profile) {
+  if (!input || input.length === 0) {
+    profile.classList.add('show');
+    profile.src = 'player.png';
+    return;
+  }
 
   let imageSrc = input[0];
   profile.classList.add('show');
@@ -107,16 +111,19 @@ secondPlayerImageInput.addEventListener('change', () => {
 });
 
 function assignPlayerDetails(firstImg,firstName,secondImg,secondName){
-  globalFirstPlayerProfileSrc = firstImg;
-  globalFirstPlayerName = firstName;
-  
-  globalSecondPlayerProfileSrc = secondImg;
-  globalSecondPlayerName = secondName;
+  globalFirstPlayerProfileSrc = isLocalUrl(firstImg.src) ? 'player.png' : firstImg.src;
+  globalFirstPlayerName = firstName.value;
+
+  globalSecondPlayerProfileSrc = isLocalUrl(secondImg.src) ? 'player.png' : secondImg.src;
+  globalSecondPlayerName = secondName.value;
+}
+function isLocalUrl(url) {
+  return url !== null && url !== undefined && !url.includes('blob:http');
 }
 
 namesForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  assignPlayerDetails(firstPlayerProfile.src,firstPlayerNameInput.value,secondPlayerProfile.src,secondPlayerNameInput.value);
+  assignPlayerDetails(firstPlayerProfile,firstPlayerNameInput,secondPlayerProfile,secondPlayerNameInput);
   loadLastPage();
 });
 /* ============================================================================= */
@@ -131,10 +138,10 @@ function loadLastPage(){
 }
 
 function setGamePlayerDetails(){
-  if(!globalFirstPlayerProfileSrc.includes('index.htm')){
+  if(!globalFirstPlayerProfileSrc.includes('index.htm') && globalFirstPlayerProfileSrc !== null){
     playerProfile1.src = globalFirstPlayerProfileSrc;
   } 
-  if(!globalSecondPlayerProfileSrc.includes('index.htm')){
+  if(!globalSecondPlayerProfileSrc.includes('index.htm') && globalSecondPlayerProfileSrc !== null){
     playerProfile2.src = globalSecondPlayerProfileSrc;
   }
   
@@ -272,9 +279,6 @@ function checkIds(e){
         break;
       case 'edit':
         loadDynamicPage(secondPage);
-        break;
-      case 'scores':
-        loadDynamicPage('scores-page');
         break;
       case 'reset':
         resetGame();
