@@ -103,7 +103,6 @@ function loadImage(input, profile) {
   img.onload = () => {
     profile.src = URL.createObjectURL(imageSrc);
     profile.classList.add('show');
-    console.log("image checked");
   };
   img.onerror = () => {
     profile.src = 'player.png';
