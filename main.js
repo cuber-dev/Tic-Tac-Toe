@@ -147,12 +147,8 @@ function loadLastPage(){
 }
 
 function setGamePlayerDetails(){
-  if(!globalFirstPlayerProfileSrc.includes('index.htm') && globalFirstPlayerProfileSrc !== null){
-    playerProfile1.src = globalFirstPlayerProfileSrc;
-  } 
-  if(!globalSecondPlayerProfileSrc.includes('index.htm') && globalSecondPlayerProfileSrc !== null){
-    playerProfile2.src = globalSecondPlayerProfileSrc;
-  }
+  playerProfile1.src = globalFirstPlayerProfileSrc;
+  playerProfile2.src = globalSecondPlayerProfileSrc;
   
   playerName1.innerText = globalFirstPlayerName;
   playerName2.innerText = globalSecondPlayerName;
@@ -172,6 +168,8 @@ function handleTile(tile,symbol){
         winPlayerImg = symbol === 'X' ? playerProfile1.src : playerProfile2.src;
         winPlayerName = symbol === 'X' ? playerName1.innerText : playerName2.innerText;
         loadMatchContainer(winHeader,winPlayerImg,winPlayerName,winGreetings);
+        // For updating the turn when a player wons the match
+        isCurrentPlayer(symbol);
       },1000);
       return '';
     }else if(checkForTie()){
@@ -183,18 +181,20 @@ function handleTile(tile,symbol){
     }
    
     currentPlayerSymbol = symbol === 'X' ? 'O' : 'X';
-   
-    if(currentPlayerSymbol === 'X'){
-     playerContainer1.classList.add('active');
-     playerContainer2.classList.remove('active');
-    } 
-    else {
-     playerContainer2.classList.add('active');
-     playerContainer1.classList.remove('active');
-    }
-    
-    playerTurnIndicator.innerText = currentPlayerSymbol + '-Turn';
+    // For updating instantly when turn changed
+    isCurrentPlayer(currentPlayerSymbol);
   }
+}
+function isCurrentPlayer(passedSymbol){
+  if(passedSymbol === 'X'){
+    playerContainer1.classList.add('active');
+    playerContainer2.classList.remove('active');
+   } 
+   else {
+    playerContainer2.classList.add('active');
+    playerContainer1.classList.remove('active');
+   }
+   playerTurnIndicator.innerText = passedSymbol + '-Turn';
 }
 function checkForWin(){
   return checkRows() || checkColumns() || checkDiagnols();
