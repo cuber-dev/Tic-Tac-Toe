@@ -1,10 +1,10 @@
 // Loader
 const loader = document.querySelector('.loader-container');
-function loadLoader(){
+function loadLoader(delay = 3){
   loader.classList.add('show');
   setTimeout(() => {
    loader.classList.remove('show');
-  }, 1000 * 3);
+  }, 1000 * delay);
 }
 
 
@@ -318,4 +318,5 @@ function loadDefaultPage(){
 
 window.addEventListener('load',() => {
   loadDefaultPage();
+  loadLoader(2);
 });
