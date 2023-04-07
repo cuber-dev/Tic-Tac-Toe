@@ -167,6 +167,7 @@ img.show{
 
 .second-page.start-up{
   gap: 2rem;
+  width: 450px;
   display: none;
 }
 .second-page.start-up form,
@@ -416,7 +417,10 @@ img.show{
 
 
 @media (max-width:456px){
-  .second-page.start-up,
+  .second-page.start-up{
+    width: 90%;
+    padding: 1.5rem;
+  }
   .last-page.play-ground{
     width: 90%;
   }
