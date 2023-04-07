@@ -311,7 +311,10 @@ img.show{
 .last-page.play-ground .players-display-container .player-display.active{
   background-color: #1D6146;
 }
-
+.last-page.play-ground .players-display-container .player-display.won{
+  background-color: var(--theme-2);
+  color: black;
+}
  .last-page.play-ground .players-display-container .player-display .image-container .player-images{
   width: 50px;
   height: 50px;
@@ -367,6 +370,19 @@ img.show{
               -3px -3px 10px rgba(90, 207, 168, 0.5);
   cursor: pointer;
 }
+.last-page.play-ground .whole-game-container .board-container .tile.matched{
+  animation: blinkColor 500ms linear infinite;
+}
+@keyframes blinkColor{
+  from{
+    background-color: var(--active);
+    color :white;
+  }to{
+    background-color: var(--theme-2);
+    color :black;
+  }
+}
+
 .last-page.play-ground .whole-game-container .board-container .tile.active,
 .last-page.play-ground .whole-game-container .board-container .tile:hover{
   background-color: var(--active);

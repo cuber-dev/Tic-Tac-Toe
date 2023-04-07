@@ -162,6 +162,7 @@ function handleTile(tile,symbol){
     tile.innerText = symbol;
    
     if(checkForWin()){
+    wholeGameContainer.style.pointerEvents = 'none';
       setTimeout(() => {
         resetGame();
         winPlayerImg = symbol === 'X' ? playerProfile1.src : playerProfile2.src;
@@ -169,13 +170,15 @@ function handleTile(tile,symbol){
         loadMatchContainer(winHeader,winPlayerImg,winPlayerName,winGreetings);
         // For updating the turn when a player wons the match
         isCurrentPlayer(symbol);
-      },1000);
+      },2000);
       return '';
     }else if(checkForTie()){
+      wholeGameContainer.style.pointerEvents = 'none';
+      addWinClass(...boardTiles);
       setTimeout(() => {
         resetGame();
         loadMatchContainer(tieHeader,tieMatchImg,tieName,tieGreetings[Math.floor(Math.random() * tieGreetings.length)]);
-      },1000);
+      },2000);
       return '';
     }
    
@@ -214,7 +217,11 @@ function checkDiagnols(){
    return checkMatchof(1,5,9) || checkMatchof(3,5,7);
 }
 function checkMatchof(i,j,k){
-  return boardTiles[i-1].innerText === currentPlayerSymbol && boardTiles[j-1].innerText === currentPlayerSymbol && boardTiles[k-1].innerText === currentPlayerSymbol;
+  if (boardTiles[i-1].innerText === currentPlayerSymbol && boardTiles[j-1].innerText === currentPlayerSymbol && boardTiles[k-1].innerText === currentPlayerSymbol) {
+    addWinClass(boardTiles[i-1],boardTiles[j-1],boardTiles[k-1]);
+    return true;
+  }
+  return false;
 }
 
 function checkForTie(){
@@ -224,6 +231,14 @@ function checkForTie(){
     }
   }
   return true;
+}
+function addWinClass(...tiles) {
+  tiles.forEach(tile => {
+    tile.classList.add('matched');
+  });
+  player = currentPlayerSymbol === 'X' ? playerContainer1 : playerContainer2;
+  if(checkForTie()) return;
+  player.classList.add('won');
 }
 
 function loadMatchContainer(header,image,name,greetings){
@@ -242,8 +257,12 @@ function loadMatchContainer(header,image,name,greetings){
 }
 
 function resetGame(){
+  wholeGameContainer.style.pointerEvents = 'visible';
+  playerContainer1.classList.remove('won');
+  playerContainer2.classList.remove('won');
+
   boardTiles.forEach(tile => {
-    tile.classList.remove('active');
+    tile.classList.remove('active','matched');
     tile.innerText = '';
   });
   currentPlayerSymbol = 'X';
