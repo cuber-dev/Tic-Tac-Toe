@@ -457,7 +457,11 @@ img.show{
     width:0%;
   }
 }
-
+.last-page.play-ground .match-indicator-container #match-indicator-header{
+  background: #ECECEC;
+  padding: .2rem .5rem;
+  border-radius: .3rem;
+}
 .last-page.play-ground .match-indicator-container .match-player-img-container{
   width: 50%;
 }
@@ -468,7 +472,7 @@ img.show{
   font-weight: bold;
 }
 .last-page.play-ground .match-indicator-container #match-para{
-  font-size: .8rem;
+  font-size: .9rem;
   opacity: 0.8;
   line-height: 20px;
   color: var(--white);
