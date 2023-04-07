@@ -321,6 +321,7 @@ img.show{
   padding: .1rem;
   text-transform: capitalize;
   color: white;
+  font-size: 1.3rem;
   width: 100%;
   overflow: scroll;
 }
