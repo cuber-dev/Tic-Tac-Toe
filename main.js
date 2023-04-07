@@ -47,6 +47,12 @@ const navOpenBtn = document.querySelector('#nav-btn');
 const navBar = document.querySelector('.nav-bar');
 const navCloseBtn = document.querySelector('#back-nav-btn');
 const navOptions = document.querySelectorAll('.nav-bar ul li');
+
+const matchIndicatorContainer = document.querySelector('.match-indicator-container');
+const matchIndicatorHeader = document.querySelector('#match-indicator-header');
+const matchPlayerImage = document.querySelector('#match-player-img');
+const matchPara = document.querySelector('#match-para');
+const winPlayerName = document.querySelector('#win-player-name');
 /* ============================================================================= */
 
 /* ========================= Global variables ============================== */
