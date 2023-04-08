@@ -94,6 +94,8 @@ function loadSecondPage(){
   firstPage.classList.remove('show');
   lastPage.classList.remove('show');
   loadLoader();
+  resetGame();
+  resetScores();
   secondPage.classList.add('show');
 }
 
@@ -340,6 +342,15 @@ function loadScoreTable(passedSymbol){
   if(passedSymbol === 'X') globalFirstPlayerWinCount++;
   else if(passedSymbol === 'O') globalSecondPlayerWinCount++;
 
+  scoreWin1.innerText = globalFirstPlayerWinCount;
+  scoreWin2.innerText = globalSecondPlayerWinCount;
+  
+  scoreTie.innerText = tieCount;
+}
+function resetScores(){
+  globalFirstPlayerWinCount = 0;
+  globalSecondPlayerWinCount = 0;
+  tieCount = 0;
   scoreWin1.innerText = globalFirstPlayerWinCount;
   scoreWin2.innerText = globalSecondPlayerWinCount;
   
