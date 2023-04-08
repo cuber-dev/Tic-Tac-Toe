@@ -285,8 +285,14 @@ function addWinClass(...tiles) {
   tiles.forEach(tile => {
     tile.classList.add('matched');
   });
-  if(isTie) return;
   player = currentPlayerSymbol === 'X' ? playerContainer1 : playerContainer2;
+  setTimeout(() => {
+    tiles.forEach(tile => {
+      tile.classList.remove('matched');
+      player.classList.remove('won');
+    });
+  },2000);
+  if(isTie) return;
   player.classList.add('won');
 }
 
@@ -319,12 +325,8 @@ function loadMatchContainer(header,image,name,greetings){
 
 function resetGame(){
   wholeGameContainer.style.pointerEvents = 'visible';
-  playerContainer1.classList.remove('won');
-  playerContainer2.classList.remove('won');
-
   boardTiles.forEach(tile => {
     tile.classList.remove('active');
-    tile.classList.remove('matched');
     tile.innerText = '';
   });
   currentPlayerSymbol = 'X';
