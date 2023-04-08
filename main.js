@@ -375,3 +375,17 @@ window.addEventListener('DOMContentLoaded', () => {
   loadDefaultPage();
   loadLoader(5);
 });
+
+function addClickLabel(e){
+  let div = document.createElement('div');
+  div.classList.add('touchLabel');
+  div.style.left = e.clientX + 'px';
+  div.style.top = e.clientY + 'px';
+  document.body.append(div);
+  setTimeout(() => {
+    let allLabels = document.querySelectorAll('.touchLabel');
+    allLabels[0].remove();
+  },200);
+  
+}
+document.addEventListener('click',addClickLabel);

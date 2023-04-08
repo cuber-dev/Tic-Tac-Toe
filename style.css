@@ -30,6 +30,21 @@ body {
   --black : #000;
   --active : rgb(47, 121, 96);
 }
+.touchLabel{
+  position: fixed;
+  height: 5px;
+  width: 5px;
+  background: #FFF900;
+  border-radius: 50%;
+  z-index: 53;
+  animation: fade-out 200ms linear 1;
+}
+@keyframes fade-out{
+  to{
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
 img{
   display: none;
   height: 100%;
@@ -537,3 +552,5 @@ img.show{
     height: 90%;
   }
 }
+
+
