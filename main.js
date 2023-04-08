@@ -58,11 +58,13 @@ const matchPlayerName = document.querySelector('#match-player-name');
 
 /* ========================= Global variables ============================== */
 let currentPlayerSymbol = 'X';
+let isTie = false;
+
 let globalFirstPlayerName = 'Player-1';
-let globalFirstPlayerProfileSrc = 'player.png';
+let globalFirstPlayerProfileSrc = '';
 
 let globalSecondPlayerName = 'Player-2';
-let globalSecondPlayerProfileSrc = 'player.png';
+let globalSecondPlayerProfileSrc = '';
 
 let winHeader = 'Congratulations';
 let winPlayerName = '';
@@ -213,7 +215,8 @@ function handleTile(tile,symbol){
       return '';
     }else if(checkForTie()){
       wholeGameContainer.style.pointerEvents = 'none';
-      addWinClass(...boardTiles);
+      isTie = true;
+      addWinClass(...boardTiles,isTie = true);
       setTimeout(() => {
         resetGame();
         loadMatchContainer(tieHeader,tieMatchImg,tieName,tieGreetings[Math.floor(Math.random() * tieGreetings.length)]);
@@ -262,6 +265,14 @@ function checkMatchof(i,j,k){
   }
   return false;
 }
+function addWinClass(...tiles) {
+  tiles.forEach(tile => {
+    tile.classList.add('matched');
+  });
+  if(isTie) return;
+  player = currentPlayerSymbol === 'X' ? playerContainer1 : playerContainer2;
+  player.classList.add('won');
+}
 
 function checkForTie(){
   for(let i = 0; i < boardTiles.length; i++){
@@ -271,14 +282,7 @@ function checkForTie(){
   }
   return true;
 }
-function addWinClass(...tiles) {
-  tiles.forEach(tile => {
-    tile.classList.add('matched');
-  });
-  player = currentPlayerSymbol === 'X' ? playerContainer1 : playerContainer2;
-  if(checkForTie()) return;
-  player.classList.add('won');
-}
+
 
 function loadMatchContainer(header,image,name,greetings){
   wholeGameContainer.classList.remove('show');
