@@ -268,7 +268,13 @@ img.show{
   justify-content:start;
   padding: 1rem;
   width: 320px;
+  gap: 1.5rem;
   background-color: var(--theme-1);
+}
+.last-page.play-ground header{
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid var(--theme-3);
 }
   
 .last-page.play-ground .whole-game-container{
@@ -276,9 +282,7 @@ img.show{
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  padding: 2.5rem 0 0 0;
   gap: 2rem;
-  border-top: 2px solid var(--theme-3);
   width: 100%;
 }
 .last-page.play-ground .whole-game-container.show{
@@ -358,8 +362,8 @@ img.show{
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 85px;
-  max-height: 90px;
+  min-height: 90px;
+  max-height: 95px;
   background-color:rgb(63, 155, 124);
   border-radius: .3rem;
   font-size: 1.6rem;
@@ -452,7 +456,6 @@ img.show{
 
 .last-page.play-ground .match-indicator-container{
   position: relative;
-  border-top: 2px solid var(--theme-3);
   height: 517px;
   width:100%;
   padding:.5rem;
