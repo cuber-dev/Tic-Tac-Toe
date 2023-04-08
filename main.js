@@ -388,4 +388,15 @@ function addClickLabel(e){
   },200);
   
 }
-document.addEventListener('click',addClickLabel);
+function playMelodySound(e){
+  let children = e.target;
+  let meloadySound = document.querySelector('#melody-sound');
+  let possibleElemnts = ['button','label','li'];
+  if(possibleElemnts.includes(children.tagName.toLowerCase()) || children.matches('.tile')){
+    meloadySound.play();
+  }
+}
+document.addEventListener('click',(e) => {
+  addClickLabel(e);
+  playMelodySound(e);
+});
