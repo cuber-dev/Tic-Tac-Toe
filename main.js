@@ -287,10 +287,10 @@ function addWinClass(...tiles) {
   });
   player = currentPlayerSymbol === 'X' ? playerContainer1 : playerContainer2;
   setTimeout(() => {
-    tiles.forEach(tile => {
+    boardTiles.forEach(tile => {
       tile.classList.remove('matched');
-      player.classList.remove('won');
     });
+    player.classList.remove('won');
   },2000);
   if(isTie) return;
   player.classList.add('won');
