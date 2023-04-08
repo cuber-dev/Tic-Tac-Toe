@@ -1,3 +1,6 @@
+// Importing image render 
+import { getImage } from '/imageAwesome.js';
+
 // Loader
 const loader = document.querySelector('.loader-container');
 function loadLoader(delay = 3){
@@ -59,10 +62,10 @@ const matchPlayerName = document.querySelector('#match-player-name');
 /* ========================= Global variables ============================== */
 let currentPlayerSymbol = 'X';
 let globalFirstPlayerName = 'Player-1';
-let globalFirstPlayerProfileSrc = 'player.png';
+let globalFirstPlayerProfileSrc = '';
 
 let globalSecondPlayerName = 'Player-2';
-let globalSecondPlayerProfileSrc = 'player.png';
+let globalSecondPlayerProfileSrc = '';
 
 let winHeader = 'Congratulations';
 let winPlayerName = '';
@@ -92,8 +95,7 @@ newGame.addEventListener('click',loadSecondPage);
 
 function loadImage(input, profile) {
   if (!input || input.length === 0) {
-    profile.classList.add('show');
-    profile.src = 'player.png';
+    profile.classList.remove('show');
     return;
   }
 
@@ -105,8 +107,7 @@ function loadImage(input, profile) {
     profile.classList.add('show');
   };
   img.onerror = () => {
-    profile.src = 'player.png';
-    profile.classList.add('show');
+    profile.classList.remove('show');
   };
 }
 
@@ -119,10 +120,10 @@ secondPlayerImageInput.addEventListener('change', () => {
 });
 
 function assignPlayerDetails(firstImg,firstName,secondImg,secondName){
-  globalFirstPlayerProfileSrc = isLocalUrl(firstImg.src) ? 'player.png' : firstImg.src;
+  globalFirstPlayerProfileSrc = isLocalUrl(firstImg.src) ? '' : firstImg.src;
   globalFirstPlayerName = firstName.value;
 
-  globalSecondPlayerProfileSrc = isLocalUrl(secondImg.src) ? 'player.png' : secondImg.src;
+  globalSecondPlayerProfileSrc = isLocalUrl(secondImg.src) ? '' : secondImg.src;
   globalSecondPlayerName = secondName.value;
 }
 function isLocalUrl(url) {
@@ -145,9 +146,17 @@ function loadLastPage(){
   setGamePlayerDetails();
 }
 
-function setGamePlayerDetails(){
-  playerProfile1.src = globalFirstPlayerProfileSrc;
-  playerProfile2.src = globalSecondPlayerProfileSrc;
+async function setGamePlayerDetails(){
+  if(globalFirstPlayerProfileSrc !== ''){
+   playerProfile1.src = globalFirstPlayerProfileSrc;
+  }else{
+    playerProfile1.src = await getImage(globalFirstPlayerName);
+  }
+  if(globalSecondPlayerProfileSrc !== ''){
+    playerProfile2.src = globalSecondPlayerProfileSrc;
+  }else{
+    playerProfile2.src = await getImage(globalSecondPlayerName);
+  }
   
   playerName1.innerText = globalFirstPlayerName;
   playerName2.innerText = globalSecondPlayerName;
