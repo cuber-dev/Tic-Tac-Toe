@@ -323,7 +323,8 @@ function resetGame(){
   playerContainer2.classList.remove('won');
 
   boardTiles.forEach(tile => {
-    tile.classList.remove('active','matched');
+    tile.classList.remove('active');
+    tile.classList.remove('matched');
     tile.innerText = '';
   });
   currentPlayerSymbol = 'X';
