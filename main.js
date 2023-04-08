@@ -1,6 +1,3 @@
-// Importing image render 
-import { getImages }
-
 // Loader
 const loader = document.querySelector('.loader-container');
 function loadLoader(delay = 3){
@@ -95,8 +92,7 @@ newGame.addEventListener('click',loadSecondPage);
 
 function loadImage(input, profile) {
   if (!input || input.length === 0) {
-    profile.classList.add('show');
-    profile.src = 'player.png';
+    profile.classList.remove('show');
     return;
   }
 
@@ -108,8 +104,7 @@ function loadImage(input, profile) {
     profile.classList.add('show');
   };
   img.onerror = () => {
-    profile.src = 'player.png';
-    profile.classList.add('show');
+    profile.classList.remove('show');
   };
 }
 
@@ -122,10 +117,10 @@ secondPlayerImageInput.addEventListener('change', () => {
 });
 
 function assignPlayerDetails(firstImg,firstName,secondImg,secondName){
-  globalFirstPlayerProfileSrc = isLocalUrl(firstImg.src) ? 'player.png' : firstImg.src;
+  globalFirstPlayerProfileSrc = isLocalUrl(firstImg.src) ? '' : firstImg.src;
   globalFirstPlayerName = firstName.value;
 
-  globalSecondPlayerProfileSrc = isLocalUrl(secondImg.src) ? 'player.png' : secondImg.src;
+  globalSecondPlayerProfileSrc = isLocalUrl(secondImg.src) ? '' : secondImg.src;
   globalSecondPlayerName = secondName.value;
 }
 function isLocalUrl(url) {
@@ -148,9 +143,50 @@ function loadLastPage(){
   setGamePlayerDetails();
 }
 
-function setGamePlayerDetails(){
-  playerProfile1.src = globalFirstPlayerProfileSrc;
-  playerProfile2.src = globalSecondPlayerProfileSrc;
+async function getImage(playerName){
+  let formatPaths = [
+      '5.x/identicon',
+      '5.x/bottts',
+      '4.x/pixel-art',
+      '5.x/pixel-art-neutral',
+      '5.x/adventurer',
+      '5.x/thumbs',
+      '5.x/icons',
+      '5.x/adventurer-neutral',
+      '5.x/avataaars',
+      '5.x/avataaars-neutral',
+      '5.x/big-ears',
+      '5.x/big-ears-neutral',
+      '5.x/big-smile',
+      '5.x/bottts-neutral',
+      '5.x/croodles',
+      '5.x/croodles-neutral',
+      '5.x/fun-emoji',
+      '5.x/lorelei',
+      '5.x/lorelei-neutral',
+      '5.x/shapes'
+    ];
+  let random = Math.floor(Math.random() * formatPaths.length);
+  let response = await fetch(`https://api.dicebear.com/${formatPaths[random]}/svg?seed=${playerName}`);
+  let blob = await response.blob();
+  const imageUrl = URL.createObjectURL(blob);
+  return imageUrl;
+}
+
+
+
+async function setGamePlayerDetails(){
+  if(globalFirstPlayerProfileSrc !== ''){
+    playerProfile1.src = globalFirstPlayerProfileSrc;
+  }else{
+    playerProfile1.src = await getImage(globalFirstPlayerName);
+  }
+  
+  if(globalSecondPlayerProfileSrc !== ''){
+    playerProfile2.src = globalSecondPlayerProfileSrc;
+  }else{
+    playerProfile2.src = await getImage(globalSecondPlayerName);
+  }
   
   playerName1.innerText = globalFirstPlayerName;
   playerName2.innerText = globalSecondPlayerName;
