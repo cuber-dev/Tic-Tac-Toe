@@ -19,6 +19,8 @@ body {
 *{
   padding: 0;
   margin:0;
+  color: inherit;
+  text-decoration: none;
   box-sizing: border-box;
   scrollbar-color: transparent transparent;
 }
@@ -148,13 +150,15 @@ img.show{
   width: 100%;
 }
 
-.first-page.home main .buttons-container button{
+.first-page.home main .buttons-container button,
+.first-page.home main .buttons-container a{
   padding: .7rem;
   width: 100%;
   border: 2px solid var(--theme-2);
   background-color: transparent;
   border-radius: .3rem;
   font-weight: bold;
+  text-align: center;
   font-size: 1.1rem;
   cursor: pointer;
 }
@@ -165,11 +169,11 @@ img.show{
 .first-page.home main .buttons-container button#new-game:hover{
   background-color: #fffb00;
 }
-.first-page.home main .buttons-container button#scores{
+.first-page.home main .buttons-container #author{
   position: relative;
   z-index: 1;
 }
-.first-page.home main .buttons-container button#scores::after{
+.first-page.home main .buttons-container #author::after{
   content: "";
   background-color: #fffb00;
   position: absolute;
@@ -181,7 +185,7 @@ img.show{
   top: 100%;
   transition: all 300ms ease-in-out;
 }
-.first-page.home main .buttons-container button#scores:hover::after{
+.first-page.home main .buttons-container #author:hover::after{
   top: 0%;
 }
 
