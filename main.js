@@ -69,9 +69,11 @@ let isTie = false;
 
 let globalFirstPlayerName = 'Player-1';
 let globalFirstPlayerProfileSrc = '';
+let globalFirstPlayerWinCount = 0;
 
 let globalSecondPlayerName = 'Player-2';
 let globalSecondPlayerProfileSrc = '';
+let globalSecondPlayerWinCount = 0;
 
 let winHeader = 'Congratulations';
 let winPlayerName = '';
@@ -82,6 +84,7 @@ let tieHeader = 'Well Done Guys!';
 let tieName = 'Match tie';
 let tieMatchImg = 'matchTie.png';
 let tieGreetings = ['Well played! It\'s always impressive to see two players evenly matched.','Congratulations on a great game! It\'s amazing how evenly matched you two are.','Wow, what a close match! You both played incredibly well.','That was an exciting game, you both deserve recognition for your skills.','Great effort from both sides! A tie was the perfect result for such a close match.'];
+let tieCount = 0;
 /* ============================================================================= */
 
 
@@ -216,6 +219,8 @@ function handleTile(tile,symbol){
         winPlayerImg = symbol === 'X' ? playerProfile1.src : playerProfile2.src;
         winPlayerName = symbol === 'X' ? playerName1.innerText : playerName2.innerText;
         loadMatchContainer(winHeader,winPlayerImg,winPlayerName,winGreetings);
+        loadScoreTable(symbol);
+        
         // For updating the turn when a player wons the match
         isCurrentPlayer(symbol);
       },2000);
@@ -226,6 +231,8 @@ function handleTile(tile,symbol){
       addWinClass(...boardTiles);
       setTimeout(() => {
         resetGame();
+        tieCount++;
+        loadScoreTable('');
         loadMatchContainer(tieHeader,tieMatchImg,tieName,tieGreetings[Math.floor(Math.random() * tieGreetings.length)]);
       },2000);
       return '';
@@ -267,6 +274,7 @@ function checkDiagnols(){
 }
 function checkMatchof(i,j,k){
   if (boardTiles[i-1].innerText === currentPlayerSymbol && boardTiles[j-1].innerText === currentPlayerSymbol && boardTiles[k-1].innerText === currentPlayerSymbol) {
+    isTie = false;
     addWinClass(boardTiles[i-1],boardTiles[j-1],boardTiles[k-1]);
     return true;
   }
@@ -300,6 +308,8 @@ function loadMatchContainer(header,image,name,greetings){
   matchPara.innerText = greetings;
   
   matchIndicatorContainer.classList.add('show');
+  
+  
   setTimeout(() => {
     matchIndicatorContainer.classList.remove('show');
     wholeGameContainer.classList.add('show');
@@ -325,7 +335,17 @@ boardTiles.forEach(tile => {
     handleTile(tile,currentPlayerSymbol);
   });
 });
+function loadScoreTable(passedSymbol){
+  scoreName1.innerText = globalFirstPlayerName;
+  scoreName2.innerText = globalSecondPlayerName;
+  if(passedSymbol === 'X') globalFirstPlayerWinCount++;
+  else if(passedSymbol === 'O') globalSecondPlayerWinCount++;
 
+  scoreWin1.innerText = globalFirstPlayerWinCount;
+  scoreWin2.innerText = globalSecondPlayerWinCount;
+  
+  scoreTie.innerText = tieCount;
+}
 
 /* ================================== NavBar functions ========================================== */
 function openNavBar(){
