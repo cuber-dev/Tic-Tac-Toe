@@ -529,6 +529,36 @@ img.show{
   color: var(--white);
   text-align: justify;
 }
+.last-page.play-ground .match-indicator-container .table-container {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.last-page.play-ground .match-indicator-container table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.last-page.play-ground .match-indicator-container thead {
+  background-color: #E2E2E2;
+}
+
+.last-page.play-ground .match-indicator-container th,td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.2rem;
+}
+.last-page.play-ground .match-indicator-container td{
+  color: white;
+}
+
+.last-page.play-ground .match-indicator-container td.bold{
+  text-align: center;
+  font-weight: bold;
+}
+
 
 
 

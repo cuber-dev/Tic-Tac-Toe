@@ -54,6 +54,13 @@ const matchIndicatorHeader = document.querySelector('#match-indicator-header');
 const matchPlayerImage = document.querySelector('#match-player-img');
 const matchPara = document.querySelector('#match-para');
 const matchPlayerName = document.querySelector('#match-player-name');
+
+const scoreName1 = document.querySelector('#score-name-1');
+const scoreWin1 = document.querySelector('#score-win-1');
+const scoreTie = document.querySelector('#score-tie');
+const scoreName2 = document.querySelector('#score-name-2');
+const scoreWin2 = document.querySelector('#score-win-2');
+
 /* ============================================================================= */
 
 /* ========================= Global variables ============================== */
@@ -216,7 +223,7 @@ function handleTile(tile,symbol){
     }else if(checkForTie()){
       wholeGameContainer.style.pointerEvents = 'none';
       isTie = true;
-      addWinClass(...boardTiles,isTie = true);
+      addWinClass(...boardTiles);
       setTimeout(() => {
         resetGame();
         loadMatchContainer(tieHeader,tieMatchImg,tieName,tieGreetings[Math.floor(Math.random() * tieGreetings.length)]);
