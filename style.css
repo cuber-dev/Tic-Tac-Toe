@@ -475,7 +475,7 @@ img.show{
 
 .last-page.play-ground .match-indicator-container{
   position: relative;
-  height: 517px;
+  height: 550px;
   width:100%;
   display: none;
   flex-direction: column;
@@ -493,7 +493,7 @@ img.show{
   content: '';
   position: absolute;
   left:0;
-  bottom: .8rem;
+  bottom: .5rem;
   height: 10px;
   width: 100%;
   background: var(--theme-3);
@@ -535,7 +535,7 @@ img.show{
   text-align: justify;
 }
 .last-page.play-ground .match-indicator-container .table-container {
-  width: 300px;
+  width: 280px;
   margin: 0 auto;
 }
 
