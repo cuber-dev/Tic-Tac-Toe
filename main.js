@@ -281,20 +281,6 @@ function checkMatchof(i,j,k){
   }
   return false;
 }
-function addWinClass(...tiles) {
-  tiles.forEach(tile => {
-    tile.classList.add('matched');
-  });
-  player = currentPlayerSymbol === 'X' ? playerContainer1 : playerContainer2;
-  setTimeout(() => {
-    boardTiles.forEach(tile => {
-      tile.classList.remove('matched');
-    });
-    player.classList.remove('won');
-  },2000);
-  if(isTie) return;
-  player.classList.add('won');
-}
 
 function checkForTie(){
   for(let i = 0; i < boardTiles.length; i++){
@@ -305,6 +291,22 @@ function checkForTie(){
   return true;
 }
 
+function addWinClass(...tiles) {
+  tiles.forEach(tile => {
+    tile.classList.add('matched');
+  });
+  player = currentPlayerSymbol === 'X' ? playerContainer1 : playerContainer2;
+ 
+  setTimeout(() => {
+    tiles.forEach(tile => {
+      tile.classList.remove('matched');
+    });
+    player.classList.remove('won');
+  },2000);
+
+  if(isTie) return;
+  player.classList.add('won');
+}
 
 function loadMatchContainer(header,image,name,greetings){
   wholeGameContainer.classList.remove('show');

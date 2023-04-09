@@ -392,7 +392,7 @@ img.show{
   cursor: pointer;
 }
 .last-page.play-ground .whole-game-container .board-container .tile.matched{
-  animation: blinkColor 500ms linear infinite;
+  animation: blinkColor 500ms linear 4;
 }
 @keyframes blinkColor{
   from{
