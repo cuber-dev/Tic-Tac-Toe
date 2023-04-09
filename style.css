@@ -481,6 +481,7 @@ img.show{
   flex-direction: column;
   align-items: center ;
   justify-content: start;
+  padding-bottom: 1rem;
   gap: 2rem;
   overflow: scroll;
 }
@@ -491,12 +492,13 @@ img.show{
 .last-page.play-ground .match-indicator-container::after{
   content: '';
   position: absolute;
-  bottom:2.5rem;
+  bottom: .8rem;
   left:0;
   height: 10px;
   width: 100%;
   background: var(--theme-3);
   opacity: 0.5;
+  z-index: 65;
   border-radius: 0 .3rem .3rem 0;
 }
 .last-page.play-ground .match-indicator-container::after{
