@@ -434,14 +434,35 @@ function addClickLabel(e){
   },200);
   
 }
+/*
 function playMelodySound(e){
   let children = e.target;
-  let meloadySound = document.querySelector('#melody-sound');
   let possibleElemnts = ['button','label','li'];
   if(possibleElemnts.includes(children.tagName.toLowerCase()) || children.matches('.tile')){
-    meloadySound.play();
+    document.querySelector('audio').remove();
+    const audio = document.createElement('audio');
+    audio.src = 'melodyClick.mp3';
+    document.body.append(audio);
+    audio.play();
+  }
+}*/
+function playMelodySound(e){
+  let children = e.target;
+  let possibleElemnts = ['button','label','li'];
+  if(possibleElemnts.includes(children.tagName.toLowerCase()) || children.matches('.tile')){
+    document.querySelector('audio').remove();
+    const audio = document.createElement('audio');
+    audio.src = 'melodyClick.mp3';
+    document.body.append(audio);
+    audio.play();
+    audio.addEventListener('timeupdate', () => {
+      if(audio.currentTime >= 0.1){
+        audio.pause();
+      }
+    });
   }
 }
+
 document.addEventListener('click',(e) => {
   addClickLabel(e);
   playMelodySound(e);
