@@ -574,7 +574,7 @@ img.show{
   }
   .last-page.play-ground{
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     border-radius: 0;
   }
   .last-page.play-ground .whole-game-container{
