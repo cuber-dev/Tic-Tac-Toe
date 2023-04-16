@@ -165,18 +165,19 @@ maxPlayer.addEventListener('change',handleMaxPlayerClick);
 function assignPlayerDetails(firstImg,firstName,secondImg,secondName){
   globalFirstPlayerProfileSrc = isLocalUrl(firstImg.src) ? '' : firstImg.src;
   globalFirstPlayerName = firstName.value;
-
+  
+  console.log(secondImg.src)
   globalSecondPlayerProfileSrc = isLocalUrl(secondImg.src) ? '' : secondImg.src;
   globalSecondPlayerName = secondName.value;
 }
 function isLocalUrl(url) {
-  return url !== null && url !== undefined && !url.includes('blob:http');
+  return url !== null && url !== undefined && !url.includes('blob:http') && !url.includes('maxpark.png');
 }
 
 namesForm.addEventListener('submit', (e) => {
   e.preventDefault();
   if(maxPlayer.checked){
-    assignPlayerDetails(firstPlayerProfile,firstPlayerNameInput,secondPlayerProfile,{ value : maxPlayer.name});
+    assignPlayerDetails(firstPlayerProfile,firstPlayerNameInput,{ src : 'maxpark.png'},{ value : maxPlayer.name});
     loadMessage('Max is playing with ' + globalFirstPlayerName);
   }else{
     assignPlayerDetails(firstPlayerProfile,firstPlayerNameInput,secondPlayerProfile,secondPlayerNameInput);
@@ -238,7 +239,10 @@ async function setGamePlayerDetails(){
   
   if(globalSecondPlayerProfileSrc !== ''){
     playerProfile2.src = globalSecondPlayerProfileSrc;
+    console.log('not local image')
   }else{
+    console.log('local image')
+
     playerProfile2.src = await getImage(globalSecondPlayerName);
   }
   
