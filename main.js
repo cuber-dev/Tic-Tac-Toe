@@ -310,7 +310,7 @@ function isCurrentPlayer(passedSymbol){
    else {
     playerContainer2.classList.add('active');
     playerContainer1.classList.remove('active');
-    if(!isGameOver) fireUpMax();
+    if(globalSecondPlayerName === 'Max') checkGameOver(isGameOver);
    }
    playerTurnIndicator.innerText = passedSymbol + '-Turn';
    currentPlayerSymbol = passedSymbol;
@@ -370,7 +370,6 @@ function addWinClass(...tiles) {
 
 function loadMatchContainer(header,image,name,greetings){
   wholeGameContainer.classList.remove('show');
-
   matchIndicatorHeader.innerText = header;
   matchPlayerImage.src = image;
   matchPlayerName.innerText = name;
@@ -382,12 +381,19 @@ function loadMatchContainer(header,image,name,greetings){
   setTimeout(() => {
     matchIndicatorContainer.classList.remove('show');
     wholeGameContainer.classList.add('show');
+    isGameOver = false;
+    if(globalSecondPlayerName === 'Max' && currentPlayerSymbol === 'O') checkGameOver(false);
   },1000 * 5);
+}
+function checkGameOver(gameOver){
+  if(!gameOver){
+    wholeGameContainer.classList.add('disabled');
+    fireUpMax();
+  }
 }
 
 function resetGame(){
   wholeGameContainer.classList.remove('disabled');
-  isGameOver = false;
   boardTiles.forEach(tile => {
     tile.classList.remove('active');
     tile.innerText = '';
