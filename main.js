@@ -7,6 +7,16 @@ function loadLoader(delay = 3){
   }, 1000 * delay);
 }
 
+// Message
+function loadMessage(message){
+  const messageText = document.createElement('div');
+  messageText.innerText = message;
+  messageText.classList.add('message');
+  document.body.append(messageText);
+  setTimeout(() => {
+    messageText.remove();
+  },1000 * 3);
+}
 
 // First page elements 
 const firstPage = document.querySelector('.first-page');
@@ -21,10 +31,13 @@ const firstPlayerImageInput = document.querySelector('#player-image-input-1');
 const firstPlayerImageLabel = document.querySelector('#player-image-label-1');
 const firstPlayerNameInput = document.querySelector('#player-name-input-1');
 
+const secondPlayerContainer = document.querySelector('.player.player-2');
 const secondPlayerProfile = document.querySelector('#player-image-2');
 const secondPlayerImageInput = document.querySelector('#player-image-input-2');
 const secondPlayerImageLabel = document.querySelector('#player-image-label-2');
 const secondPlayerNameInput = document.querySelector('#player-name-input-2');
+
+const maxPlayer = document.querySelector('#max-player');
 
 const formSubmitBtn = document.querySelector('#start-game');
 /* ============================================================================= */
@@ -129,6 +142,22 @@ secondPlayerImageInput.addEventListener('change', () => {
   loadImage(secondPlayerImageInput.files,secondPlayerProfile);
 });
 
+function handleMaxPlayerClick() {
+  let isMaxPlayer = maxPlayer.checked;
+  if (isMaxPlayer) {
+    loadMessage('Removed Second player');
+    secondPlayerContainer.classList.add('disabled');
+    secondPlayerNameInput.removeAttribute('required','autofocus')
+  } else {
+    loadMessage('Added Second player');
+    secondPlayerContainer.classList.remove('disabled');
+    secondPlayerNameInput.setAttribute('required','autofocus')
+  }
+}
+maxPlayer.addEventListener('change',handleMaxPlayerClick);
+
+
+
 function assignPlayerDetails(firstImg,firstName,secondImg,secondName){
   globalFirstPlayerProfileSrc = isLocalUrl(firstImg.src) ? '' : firstImg.src;
   globalFirstPlayerName = firstName.value;
@@ -142,16 +171,28 @@ function isLocalUrl(url) {
 
 namesForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  assignPlayerDetails(firstPlayerProfile,firstPlayerNameInput,secondPlayerProfile,secondPlayerNameInput);
+  if(maxPlayer.checked){
+    assignPlayerDetails(firstPlayerProfile,firstPlayerNameInput,secondPlayerProfile,{ value : maxPlayer.name});
+    setTimeout(() => {
+        fireUpMax();
+    },1000 * 2);
+  }else{
+    assignPlayerDetails(firstPlayerProfile,firstPlayerNameInput,secondPlayerProfile,secondPlayerNameInput);
+  }
+  
   loadLastPage();
 });
+
+
+
+
 /* ============================================================================= */
 
 /* ============================ LastPage functions ================================================= */
 function loadLastPage(){
   secondPage.classList.remove('show');
   firstPage.classList.remove('show');
-  loadLoader();
+  loadLoader(2);
   lastPage.classList.add('show');
   setGamePlayerDetails();
 }
@@ -204,8 +245,16 @@ async function setGamePlayerDetails(){
   playerName1.innerText = globalFirstPlayerName;
   playerName2.innerText = globalSecondPlayerName;
 }
+/* ==========================  Max functions =================================================== */
+
+function fireUpMax(){
+  loadMessage('Max is playing with ' + globalFirstPlayerName);
+  console.log('Fir up max')
+}
+
 
 /* ==========================  Game functions =================================================== */
+
 
 function handleTile(tile,symbol){
   if(!tile.classList.contains('active')){
@@ -411,16 +460,6 @@ document.addEventListener('click',checkNotNavClick);
 /* ============================================================================= */
 
 
-function loadDefaultPage(){
-  firstPage.classList.add('show');
-  secondPage.classList.remove('show');
-  lastPage.classList.remove('show');
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-  loadDefaultPage();
-  loadLoader(5);
-});
 
 function addClickLabel(e){
   let div = document.createElement('div');
@@ -455,4 +494,16 @@ function playMelodySound(e){
 document.addEventListener('click',(e) => {
   addClickLabel(e);
   playMelodySound(e);
+});
+
+
+function loadDefaultPage(){
+ // firstPage.classList.add('show');
+  secondPage.classList.add('show');
+ // lastPage.classList.remove('show');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  loadDefaultPage();
+  //loadLoader(5);
 });

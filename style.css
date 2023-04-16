@@ -47,6 +47,28 @@ body {
     opacity: 0;
   }
 }
+.message{
+  position: fixed;
+  bottom: 3rem;
+  opacity: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: var(--black);
+  padding: .2rem .5rem;
+  border-radius: .2rem;
+  transition: 300ms ;
+  animation: pop-up 5s linear;
+}
+@keyframes pop-up{
+  100%{
+    opacity: 0;
+  }
+  0%,80%{
+    opacity: 1;
+  }
+}
+
 img{
   display: none;
   height: 100%;
@@ -200,6 +222,13 @@ img.show{
   gap: 2rem;
   width: 350px;
   display: none;
+  padding: .5rem 2.4rem 2.4rem 2.4rem;
+
+}
+.second-page.start-up header{
+  width: 100%;
+  text-align: center;
+  border-bottom: 2px solid black;
 }
 .second-page.start-up form,
 .second-page.start-up .button-container{
@@ -253,6 +282,24 @@ img.show{
   outline: none;
   box-shadow: 5px 5px 10px rgba(57, 202, 117, 0.5),
               -5px -5px 10px rgba(43, 207, 111, 0.5);
+}
+.second-page.start-up .players-container .max-player-container{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: .3rem;
+  padding: .5rem;
+}
+.second-page.start-up .players-container .max-player-container label{ 
+  margin-top: .2rem;
+  font-size: 1.2rem;
+}
+.second-page.start-up .players-container .max-player-container #max-player{
+ accent-color: var(--theme-2);
+}
+.second-page.start-up .players-container .player.player-2.disabled{
+  opacity: 0.5;
+  pointer-events: none;
 }
 .second-page.start-up .button-container #start-game{
   padding: .7rem;
@@ -570,7 +617,7 @@ img.show{
 @media (max-width:384px){
   .second-page.start-up{
     width: 90%;
-    padding: 1.5rem;
+    padding: .5rem 1.5rem 1.5rem 1.5rem;
   }
   .last-page.play-ground{
     width: 100vw;
