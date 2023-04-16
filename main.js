@@ -520,12 +520,12 @@ document.addEventListener('click',(e) => {
 
 
 function loadDefaultPage(){
- // firstPage.classList.add('show');
-  secondPage.classList.add('show');
- // lastPage.classList.remove('show');
+  firstPage.classList.add('show');
+  secondPage.classList.remove('show');
+  lastPage.classList.remove('show');
 }
 
 window.addEventListener('DOMContentLoaded', () => {
   loadDefaultPage();
-  //loadLoader(5);
+  loadLoader(4);
 });
