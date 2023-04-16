@@ -99,6 +99,8 @@ let tieName = 'Match tie';
 let tieMatchImg = 'matchTie.png';
 let tieGreetings = ['Well played! It\'s always impressive to see two players evenly matched.','Congratulations on a great game! It\'s amazing how evenly matched you two are.','Wow, what a close match! You both played incredibly well.','That was an exciting game, you both deserve recognition for your skills.','Great effort from both sides! A tie was the perfect result for such a close match.'];
 let tieCount = 0;
+
+let isGameOver = false;
 /* ============================================================================= */
 
 
@@ -175,13 +177,10 @@ namesForm.addEventListener('submit', (e) => {
   e.preventDefault();
   if(maxPlayer.checked){
     assignPlayerDetails(firstPlayerProfile,firstPlayerNameInput,secondPlayerProfile,{ value : maxPlayer.name});
-    setTimeout(() => {
-      fireUpMax();
-    },1000 * 2);
+    loadMessage('Max is playing with ' + globalFirstPlayerName);
   }else{
     assignPlayerDetails(firstPlayerProfile,firstPlayerNameInput,secondPlayerProfile,secondPlayerNameInput);
   }
-  
   loadLastPage();
 });
 
@@ -248,22 +247,18 @@ async function setGamePlayerDetails(){
 }
 /* ==========================  Max functions =================================================== */
 
-function awakeMax(e){
-  if(currentPlayerSymbol === 'O'){
-    boardTilesContainer.classList.add('wait');
-    let random = Math.floor(Math.random * boardTiles.length);
-    let foundTile = '';
-    while (!boardTiles[random].classList.contains('active')){
-      
-    }
-  }else{
-    boardTilesContainer.classList.remove('wait');
-  }
-}
-
 function fireUpMax(){
-  loadMessage('Max is playing with ' + globalFirstPlayerName);
-  boardTilesContainer.addEventListener('click',awakeMax);
+  for (let i = 0; i < boardTiles.length + boardTiles.length; i++) {
+    let tile = boardTiles[Math.floor(Math.random() * boardTiles.length)];
+  
+    if (!tile.classList.contains('active')) {
+      setTimeout(() => {
+        tile.click();
+        wholeGameContainer.classList.remove('disabled');
+      }, 500);
+      break;
+    }
+  }
 }
 
 
@@ -277,7 +272,7 @@ function handleTile(tile,symbol){
     tile.innerText = symbol;
    
     if(checkForWin()){
-    wholeGameContainer.style.pointerEvents = 'none';
+      wholeGameContainer.classList.add('disabled');
       setTimeout(() => {
         resetGame();
         winPlayerImg = symbol === 'X' ? playerProfile1.src : playerProfile2.src;
@@ -290,7 +285,7 @@ function handleTile(tile,symbol){
       },2000);
       return '';
     }else if(checkForTie()){
-      wholeGameContainer.style.pointerEvents = 'none';
+      wholeGameContainer.classList.add('disabled');
       isTie = true;
       addWinClass(...boardTiles);
       setTimeout(() => {
@@ -315,6 +310,7 @@ function isCurrentPlayer(passedSymbol){
    else {
     playerContainer2.classList.add('active');
     playerContainer1.classList.remove('active');
+    if(!isGameOver) fireUpMax();
    }
    playerTurnIndicator.innerText = passedSymbol + '-Turn';
    currentPlayerSymbol = passedSymbol;
@@ -340,6 +336,7 @@ function checkMatchof(i,j,k){
   if (boardTiles[i-1].innerText === currentPlayerSymbol && boardTiles[j-1].innerText === currentPlayerSymbol && boardTiles[k-1].innerText === currentPlayerSymbol) {
     isTie = false;
     addWinClass(boardTiles[i-1],boardTiles[j-1],boardTiles[k-1]);
+    isGameOver = true;
     return true;
   }
   return false;
@@ -389,7 +386,8 @@ function loadMatchContainer(header,image,name,greetings){
 }
 
 function resetGame(){
-  wholeGameContainer.style.pointerEvents = 'visible';
+  wholeGameContainer.classList.remove('disabled');
+  isGameOver = false;
   boardTiles.forEach(tile => {
     tile.classList.remove('active');
     tile.innerText = '';

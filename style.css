@@ -355,6 +355,9 @@ img.show{
 .last-page.play-ground .whole-game-container.show{
   display: flex;
 }
+.last-page.play-ground .whole-game-container.disabled{
+  pointer-events: none;
+}
 
 .last-page.play-ground .whole-game-container .players-display-container{
   display: flex;
@@ -424,9 +427,6 @@ img.show{
   grid-template-columns: repeat(3,1fr);
   width: 100%;
   margin:0;
-}
-.last-page.play-ground .whole-game-container .board-container.wait .tile{
-  pointer-events: none;
 }
 .last-page.play-ground .whole-game-container .board-container .tile{
   display: flex;
