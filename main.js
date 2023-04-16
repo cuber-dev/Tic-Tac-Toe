@@ -529,3 +529,67 @@ window.addEventListener('DOMContentLoaded', () => {
   loadDefaultPage();
   loadLoader(4);
 });
+
+
+/*
+function fireUpMax() {
+  // Check if there is a winning move for the AI
+  for (let i = 0; i < boardTiles.length; i++) {
+    if (!boardTiles[i].classList.contains('active')) {
+      boardTiles[i].innerText = 'O';
+      if (checkForWin('O')) {
+        boardTiles[i].click();
+        wholeGameContainer.classList.remove('disabled');
+        return;
+      } else {
+        boardTiles[i].innerText = '';
+      }
+    }
+  }
+
+  // Check if there is a blocking move for the opponent
+  for (let i = 0; i < boardTiles.length; i++) {
+    if (!boardTiles[i].classList.contains('active')) {
+      boardTiles[i].innerText = 'X';
+      if (checkForWin('X')) {
+        boardTiles[i].innerText = 'O';
+        boardTiles[i].click();
+        wholeGameContainer.classList.remove('disabled');
+        return;
+      } else {
+        boardTiles[i].innerText = '';
+      }
+    }
+  }
+
+  // Play center square if available
+  if (!centerTile.classList.contains('active')) {
+    centerTile.innerText = 'O';
+    centerTile.click();
+    wholeGameContainer.classList.remove('disabled');
+    return;
+  }
+
+  // Play random corner square if available
+  const cornerTiles = [topLeftTile, topRightTile, bottomLeftTile, bottomRightTile];
+  const unoccupiedCorners = cornerTiles.filter(tile => !tile.classList.contains('active'));
+  if (unoccupiedCorners.length > 0) {
+    const randomCorner = unoccupiedCorners[Math.floor(Math.random() * unoccupiedCorners.length)];
+    randomCorner.innerText = 'O';
+    randomCorner.click();
+    wholeGameContainer.classList.remove('disabled');
+    return;
+  }
+
+  // Play random edge square if available
+  const edgeTiles = [topCenterTile, leftCenterTile, rightCenterTile, bottomCenterTile];
+  const unoccupiedEdges = edgeTiles.filter(tile => !tile.classList.contains('active'));
+  if (unoccupiedEdges.length > 0) {
+    const randomEdge = unoccupiedEdges[Math.floor(Math.random() * unoccupiedEdges.length)];
+    randomEdge.innerText = 'O';
+    randomEdge.click();
+    wholeGameContainer.classList.remove('disabled');
+    return;
+  }
+}
+*/
