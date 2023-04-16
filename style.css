@@ -297,7 +297,8 @@ img.show{
 .second-page.start-up .players-container .max-player-container #max-player{
  accent-color: var(--theme-2);
 }
-.second-page.start-up .players-container .player.player-2.disabled{
+.second-page.start-up .players-container .player.player-2.disabled .image-container,
+.second-page.start-up .players-container .player.player-2.disabled input{
   opacity: 0.5;
   pointer-events: none;
 }
@@ -424,6 +425,9 @@ img.show{
   width: 100%;
   margin:0;
 }
+.last-page.play-ground .whole-game-container .board-container.wait .tile{
+  pointer-events: none;
+}
 .last-page.play-ground .whole-game-container .board-container .tile{
   display: flex;
   justify-content: center;
@@ -438,6 +442,7 @@ img.show{
               -3px -3px 10px rgba(90, 207, 168, 0.5);
   cursor: pointer;
 }
+
 .last-page.play-ground .whole-game-container .board-container .tile.matched{
   animation: blinkColor 500ms linear 4;
 }

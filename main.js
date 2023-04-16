@@ -54,6 +54,8 @@ const playerProfile2 = document.querySelector('#player-profile-2');
 const playerName2 = document.querySelector('#player-name-2');
 
 const playerTurnIndicator = document.querySelector('#player-turn-display');
+
+const boardTilesContainer = document.querySelector('.board-container');
 const boardTiles = Array.from(document.querySelectorAll('.tile'));
 
 const navOpenBtn = document.querySelector('#nav-btn');
@@ -147,11 +149,11 @@ function handleMaxPlayerClick() {
   if (isMaxPlayer) {
     loadMessage('Removed Second player');
     secondPlayerContainer.classList.add('disabled');
-    secondPlayerNameInput.removeAttribute('required','autofocus')
+    secondPlayerNameInput.disabled = true;
   } else {
     loadMessage('Added Second player');
     secondPlayerContainer.classList.remove('disabled');
-    secondPlayerNameInput.setAttribute('required','autofocus')
+    secondPlayerNameInput.disabled = false;
   }
 }
 maxPlayer.addEventListener('change',handleMaxPlayerClick);
@@ -174,7 +176,7 @@ namesForm.addEventListener('submit', (e) => {
   if(maxPlayer.checked){
     assignPlayerDetails(firstPlayerProfile,firstPlayerNameInput,secondPlayerProfile,{ value : maxPlayer.name});
     setTimeout(() => {
-        fireUpMax();
+      fireUpMax();
     },1000 * 2);
   }else{
     assignPlayerDetails(firstPlayerProfile,firstPlayerNameInput,secondPlayerProfile,secondPlayerNameInput);
@@ -182,7 +184,6 @@ namesForm.addEventListener('submit', (e) => {
   
   loadLastPage();
 });
-
 
 
 
@@ -247,9 +248,22 @@ async function setGamePlayerDetails(){
 }
 /* ==========================  Max functions =================================================== */
 
+function awakeMax(e){
+  if(currentPlayerSymbol === 'O'){
+    boardTilesContainer.classList.add('wait');
+    let random = Math.floor(Math.random * boardTiles.length);
+    let foundTile = '';
+    while (!boardTiles[random].classList.contains('active')){
+      
+    }
+  }else{
+    boardTilesContainer.classList.remove('wait');
+  }
+}
+
 function fireUpMax(){
   loadMessage('Max is playing with ' + globalFirstPlayerName);
-  console.log('Fir up max')
+  boardTilesContainer.addEventListener('click',awakeMax);
 }
 
 
