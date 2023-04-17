@@ -247,135 +247,95 @@ async function setGamePlayerDetails(){
   playerName2.innerText = globalSecondPlayerName;
 }
 /* ==========================  Max functions =================================================== */
-/*
-function fireUpMax(){
-  /*for (let i = 0; i < boardTiles.length + boardTiles.length; i++) {
-    let tile = boardTiles[Math.floor(Math.random() * boardTiles.length)];
-  
-    if (!tile.classList.contains('active')) {
-      setTimeout(() => {
-        tile.click();
-        wholeGameContainer.classList.remove('disabled');
-      }, 500);
-      break;
-    }
-  }
-  
+function fireUpMax() {
   let topLeft = boardTiles[0];
   let bottomLeft = boardTiles[2];
   let topRight = boardTiles[6];
   let bottomRight = boardTiles[8];
-  
+
   let topCenter = boardTiles[1];
   let leftCenter = boardTiles[3];
   let bottomCenter = boardTiles[7];
   let rightCenter = boardTiles[5];
-  
+
   let center = boardTiles[4];
-
-  if(topLeft.innerText === 'O' && bottomLeft.innerText === 'O' && bottomRight.innerText === 'O'){
-    if(!leftCenter.classList.contains('active')){
-      leftCenter.click();
-    }else if (!bottomCenter.classList.contains('active')) {
-      bottomCenter.click();
-    }else {
-      center.click();
-    }
-  }
-  else if (topRight.innerText === 'O' && bottomLeft.innerText === 'O' && bottomRight.innerText === 'O') {
-    if (!rightCenter.classList.contains('active')) {
-      rightCenter.click();
-    } else if (!bottomCenter.classList.contains('active')) {
-      bottomCenter.click();
-    } else {
-      center.click();
-    }
-  }else if (topRight.innerText === 'O' && topLeft.innerText === 'O' && bottomRight.innerText === 'O') {
-    if (!topCenter.classList.contains('active')) {
-      topCenter.click();
-    } else if (!rightCenter.classList.contains('active')) {
-      rightCenter.click();
-    } else {
-      center.click();
-    }
-  }else if (topRight.innerText === 'O' && topLeft.innerText === 'O' && bottomLeft.innerText === 'O') {
-    if (!leftCenter.classList.contains('active')) {
-      leftCenter.click();
-    } else if (!topCenter.classList.contains('active')) {
-      topCenter.click();
-    } else {
-      center.click();
-    }
-  }
-
-  else if(!topLeft.classList.contains('active')){
-    topLeft.click()
-  }else if(!bottomLeft.classList.contains('active')){
-    bottomLeft.click()
-  }else if(!topRight.classList.contains('active')){
-    topRight.click()
-  }else{
-    bottomRight.click()
-  }
   
-  wholeGameContainer.classList.remove('disabled');
+  // Check if there are two X's in a row and place an O to block the opponent
+  if (topLeft.innerText === 'X' && bottomLeft.innerText === 'X' && !leftCenter.classList.contains('active')) {
+    setTimeout(() => leftCenter.click(), 400);
+  } else if (topRight.innerText === 'X' && bottomRight.innerText === 'X' && !rightCenter.classList.contains('active')) {
+    setTimeout(() => rightCenter.click(), 400);
+  } else if (topLeft.innerText === 'X' && topRight.innerText === 'X' && !topCenter.classList.contains('active')) {
+    setTimeout(() => topCenter.click(), 400);
+  } else if (bottomLeft.innerText === 'X' && bottomRight.innerText === 'X' && !bottomCenter.classList.contains('active')) {
+    setTimeout(() => bottomCenter.click(), 400);
+  } else if (topLeft.innerText === 'X' && bottomRight.innerText === 'X' && !center.classList.contains('active')) {
+    setTimeout(() => center.click(), 400);
+  } else if (topRight.innerText === 'X' && bottomLeft.innerText === 'X' && !center.classList.contains('active')) {
+    setTimeout(() => center.click(), 400);
+  }
+  // Check if there are two O's in a row and place the third O to win
+  else if (topLeft.innerText === 'O' && bottomLeft.innerText === 'O' && !leftCenter.classList.contains('active')) {
+    setTimeout(() => leftCenter.click(), 400);
+  } else if (topRight.innerText === 'O' && bottomRight.innerText === 'O' && !rightCenter.classList.contains('active')) {
+    setTimeout(() => rightCenter.click(), 400);
+  } else if (topLeft.innerText === 'O' && topRight.innerText === 'O' && !topCenter.classList.contains('active')) {
+    setTimeout(() => topCenter.click(), 400);
+  } else if (bottomLeft.innerText === 'O' && bottomRight.innerText === 'O' && !bottomCenter.classList.contains('active')) {
+    setTimeout(() => bottomCenter.click(), 400);
+  } else if (topLeft.innerText === 'O' && bottomRight.innerText === 'O' && !center.classList.contains('active')) {
+    setTimeout(() => center.click(), 400);
+  } else if (topRight.innerText === 'O' && bottomLeft.innerText === 'O' && !center.classList.contains('active')) {
+    setTimeout(() => center.click(), 400);
+  }
 
-}
-*/
-function fireUpMax() {
-  const winningPatterns = [  
-    [0, 1, 2], // top row
-    [3, 4, 5], // middle row
-    [6, 7, 8], // bottom row
-    [0, 3, 6], // left column
-    [1, 4, 7], // middle column
-    [2, 5, 8], // right column
-    [0, 4, 8], // diagonal top-left to bottom-right
-    [2, 4, 6], // diagonal top-right to bottom-left
-  ];
 
-  let availableTiles = boardTiles.filter(tile => !tile.classList.contains('active'));
 
-  // Check for winning moves
-  for (let pattern of winningPatterns) {
-    let tiles = pattern.map(i => boardTiles[i]);
-
-    if (tiles.every(tile => tile.innerText === 'O')) {
-      let emptyTile = availableTiles.find(tile => tiles.indexOf(tile) === -1);
-      if (emptyTile) {
-        setTimeout(() => {
-          emptyTile.click();
-        }, 400);
-        return;
-      }
+  else if (topLeft.innerText === 'O' && bottomLeft.innerText === 'O' && bottomRight.innerText === 'O') {
+    if (!leftCenter.classList.contains('active')) {
+      setTimeout(() => leftCenter.click(), 400);
+    } else if (!bottomCenter.classList.contains('active')) {
+      setTimeout(() => bottomCenter.click(), 400);
+    } else {
+      setTimeout(() => center.click(), 400);
+    }
+  } else if (topRight.innerText === 'O' && bottomLeft.innerText === 'O' && bottomRight.innerText === 'O') {
+    if (!rightCenter.classList.contains('active')) {
+      setTimeout(() => rightCenter.click(), 400);
+    } else if (!bottomCenter.classList.contains('active')) {
+      setTimeout(() => bottomCenter.click(), 400);
+    } else {
+      setTimeout(() => center.click(), 400);
+    }
+  } else if (topRight.innerText === 'O' && topLeft.innerText === 'O' && bottomRight.innerText === 'O') {
+    if (!topCenter.classList.contains('active')) {
+      setTimeout(() => topCenter.click(), 400);
+    } else if (!rightCenter.classList.contains('active')) {
+      setTimeout(() => rightCenter.click(), 400);
+    } else {
+      setTimeout(() => center.click(), 400);
+    }
+  } else if (topRight.innerText === 'O' && topLeft.innerText === 'O' && bottomLeft.innerText === 'O') {
+    if (!leftCenter.classList.contains('active')) {
+      setTimeout(() => leftCenter.click(), 400);
+    } else if (!topCenter.classList.contains('active')) {
+      setTimeout(() => topCenter.click(), 400);
+    } else {
+      setTimeout(() => center.click(), 400);
+    }
+  } else {
+    if (!topLeft.classList.contains('active')) {
+      setTimeout(() => topLeft.click(), 400);
+    } else if (!bottomLeft.classList.contains('active')) {
+      setTimeout(() => bottomLeft.click(), 400);
+    } else if (!topRight.classList.contains('active')) {
+      setTimeout(() => topRight.click(), 400);
+    } else {
+      setTimeout(() => bottomRight.click(), 400);
     }
   }
 
-  // Check for blocking moves
-  for (let pattern of winningPatterns) {
-    let tiles = pattern.map(i => boardTiles[i]);
-
-    if (tiles.every(tile => tile.innerText === 'X')) {
-      let emptyTile = availableTiles.find(tile => tiles.indexOf(tile) === -1);
-      if (emptyTile) {
-        setTimeout(() => {
-          emptyTile.click();
-        }, 400);
-        return;
-      }
-    }
-  }
-
-  // Choose a random tile
-  if (availableTiles.length > 0) {
-    let randomIndex = Math.floor(Math.random() * availableTiles.length);
-    let randomTile = availableTiles[randomIndex];
-    setTimeout(() => {
-      randomTile.click();
-    }, 400);
-  }
-
-  wholeGameContainer.classList.remove('disabled');
+  setTimeout(() => wholeGameContainer.classList.remove('disabled'), 400);
 }
 
 
