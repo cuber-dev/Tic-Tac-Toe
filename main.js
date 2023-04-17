@@ -80,6 +80,8 @@ const scoreWin2 = document.querySelector('#score-win-2');
 /* ========================= Global variables ============================== */
 let currentPlayerSymbol = 'X';
 let isTie = false;
+let isGameOver = false;
+let maxStatus = false;
 
 let globalFirstPlayerName = 'Player-1';
 let globalFirstPlayerProfileSrc = '';
@@ -100,7 +102,6 @@ let tieMatchImg = 'matchTie.png';
 let tieGreetings = ['Well played! It\'s always impressive to see two players evenly matched.','Congratulations on a great game! It\'s amazing how evenly matched you two are.','Wow, what a close match! You both played incredibly well.','That was an exciting game, you both deserve recognition for your skills.','Great effort from both sides! A tie was the perfect result for such a close match.'];
 let tieCount = 0;
 
-let isGameOver = false;
 /* ============================================================================= */
 
 
@@ -147,8 +148,8 @@ secondPlayerImageInput.addEventListener('change', () => {
 });
 
 function handleMaxPlayerClick() {
-  let isMaxPlayer = maxPlayer.checked;
-  if (isMaxPlayer) {
+  maxStatus = maxPlayer.checked;
+  if (maxStatus) {
     loadMessage('Removed Second player');
     secondPlayerContainer.classList.add('disabled');
     secondPlayerNameInput.disabled = true;
@@ -166,7 +167,6 @@ function assignPlayerDetails(firstImg,firstName,secondImg,secondName){
   globalFirstPlayerProfileSrc = isLocalUrl(firstImg.src) ? '' : firstImg.src;
   globalFirstPlayerName = firstName.value;
   
-  console.log(secondImg.src)
   globalSecondPlayerProfileSrc = isLocalUrl(secondImg.src) ? '' : secondImg.src;
   globalSecondPlayerName = secondName.value;
 }
@@ -239,10 +239,7 @@ async function setGamePlayerDetails(){
   
   if(globalSecondPlayerProfileSrc !== ''){
     playerProfile2.src = globalSecondPlayerProfileSrc;
-    console.log('not local image')
   }else{
-    console.log('local image')
-
     playerProfile2.src = await getImage(globalSecondPlayerName);
   }
   
@@ -250,9 +247,9 @@ async function setGamePlayerDetails(){
   playerName2.innerText = globalSecondPlayerName;
 }
 /* ==========================  Max functions =================================================== */
-
+/*
 function fireUpMax(){
-  for (let i = 0; i < boardTiles.length + boardTiles.length; i++) {
+  /*for (let i = 0; i < boardTiles.length + boardTiles.length; i++) {
     let tile = boardTiles[Math.floor(Math.random() * boardTiles.length)];
   
     if (!tile.classList.contains('active')) {
@@ -263,7 +260,126 @@ function fireUpMax(){
       break;
     }
   }
+  
+  let topLeft = boardTiles[0];
+  let bottomLeft = boardTiles[2];
+  let topRight = boardTiles[6];
+  let bottomRight = boardTiles[8];
+  
+  let topCenter = boardTiles[1];
+  let leftCenter = boardTiles[3];
+  let bottomCenter = boardTiles[7];
+  let rightCenter = boardTiles[5];
+  
+  let center = boardTiles[4];
+
+  if(topLeft.innerText === 'O' && bottomLeft.innerText === 'O' && bottomRight.innerText === 'O'){
+    if(!leftCenter.classList.contains('active')){
+      leftCenter.click();
+    }else if (!bottomCenter.classList.contains('active')) {
+      bottomCenter.click();
+    }else {
+      center.click();
+    }
+  }
+  else if (topRight.innerText === 'O' && bottomLeft.innerText === 'O' && bottomRight.innerText === 'O') {
+    if (!rightCenter.classList.contains('active')) {
+      rightCenter.click();
+    } else if (!bottomCenter.classList.contains('active')) {
+      bottomCenter.click();
+    } else {
+      center.click();
+    }
+  }else if (topRight.innerText === 'O' && topLeft.innerText === 'O' && bottomRight.innerText === 'O') {
+    if (!topCenter.classList.contains('active')) {
+      topCenter.click();
+    } else if (!rightCenter.classList.contains('active')) {
+      rightCenter.click();
+    } else {
+      center.click();
+    }
+  }else if (topRight.innerText === 'O' && topLeft.innerText === 'O' && bottomLeft.innerText === 'O') {
+    if (!leftCenter.classList.contains('active')) {
+      leftCenter.click();
+    } else if (!topCenter.classList.contains('active')) {
+      topCenter.click();
+    } else {
+      center.click();
+    }
+  }
+
+  else if(!topLeft.classList.contains('active')){
+    topLeft.click()
+  }else if(!bottomLeft.classList.contains('active')){
+    bottomLeft.click()
+  }else if(!topRight.classList.contains('active')){
+    topRight.click()
+  }else{
+    bottomRight.click()
+  }
+  
+  wholeGameContainer.classList.remove('disabled');
+
 }
+*/
+function fireUpMax() {
+  const winningPatterns = [  
+    [0, 1, 2], // top row
+    [3, 4, 5], // middle row
+    [6, 7, 8], // bottom row
+    [0, 3, 6], // left column
+    [1, 4, 7], // middle column
+    [2, 5, 8], // right column
+    [0, 4, 8], // diagonal top-left to bottom-right
+    [2, 4, 6], // diagonal top-right to bottom-left
+  ];
+
+  let availableTiles = boardTiles.filter(tile => !tile.classList.contains('active'));
+
+  // Check for winning moves
+  for (let pattern of winningPatterns) {
+    let tiles = pattern.map(i => boardTiles[i]);
+
+    if (tiles.every(tile => tile.innerText === 'O')) {
+      let emptyTile = availableTiles.find(tile => tiles.indexOf(tile) === -1);
+      if (emptyTile) {
+        setTimeout(() => {
+          emptyTile.click();
+        }, 400);
+        return;
+      }
+    }
+  }
+
+  // Check for blocking moves
+  for (let pattern of winningPatterns) {
+    let tiles = pattern.map(i => boardTiles[i]);
+
+    if (tiles.every(tile => tile.innerText === 'X')) {
+      let emptyTile = availableTiles.find(tile => tiles.indexOf(tile) === -1);
+      if (emptyTile) {
+        setTimeout(() => {
+          emptyTile.click();
+        }, 400);
+        return;
+      }
+    }
+  }
+
+  // Choose a random tile
+  if (availableTiles.length > 0) {
+    let randomIndex = Math.floor(Math.random() * availableTiles.length);
+    let randomTile = availableTiles[randomIndex];
+    setTimeout(() => {
+      randomTile.click();
+    }, 400);
+  }
+
+  wholeGameContainer.classList.remove('disabled');
+}
+
+
+
 
 
 /* ==========================  Game functions =================================================== */
@@ -314,7 +430,7 @@ function isCurrentPlayer(passedSymbol){
    else {
     playerContainer2.classList.add('active');
     playerContainer1.classList.remove('active');
-    if(globalSecondPlayerName === 'Max') checkGameOver(isGameOver);
+    if(maxStatus) checkGameOver(isGameOver);
    }
    playerTurnIndicator.innerText = passedSymbol + '-Turn';
    currentPlayerSymbol = passedSymbol;
@@ -527,69 +643,7 @@ function loadDefaultPage(){
 
 window.addEventListener('DOMContentLoaded', () => {
   loadDefaultPage();
-  loadLoader(4);
+  //loadLoader(4);
 });
 
 
-/*
-function fireUpMax() {
-  // Check if there is a winning move for the AI
-  for (let i = 0; i < boardTiles.length; i++) {
-    if (!boardTiles[i].classList.contains('active')) {
-      boardTiles[i].innerText = 'O';
-      if (checkForWin('O')) {
-        boardTiles[i].click();
-        wholeGameContainer.classList.remove('disabled');
-        return;
-      } else {
-        boardTiles[i].innerText = '';
-      }
-    }
-  }
-
-  // Check if there is a blocking move for the opponent
-  for (let i = 0; i < boardTiles.length; i++) {
-    if (!boardTiles[i].classList.contains('active')) {
-      boardTiles[i].innerText = 'X';
-      if (checkForWin('X')) {
-        boardTiles[i].innerText = 'O';
-        boardTiles[i].click();
-        wholeGameContainer.classList.remove('disabled');
-        return;
-      } else {
-        boardTiles[i].innerText = '';
-      }
-    }
-  }
-
-  // Play center square if available
-  if (!centerTile.classList.contains('active')) {
-    centerTile.innerText = 'O';
-    centerTile.click();
-    wholeGameContainer.classList.remove('disabled');
-    return;
-  }
-
-  // Play random corner square if available
-  const cornerTiles = [topLeftTile, topRightTile, bottomLeftTile, bottomRightTile];
-  const unoccupiedCorners = cornerTiles.filter(tile => !tile.classList.contains('active'));
-  if (unoccupiedCorners.length > 0) {
-    const randomCorner = unoccupiedCorners[Math.floor(Math.random() * unoccupiedCorners.length)];
-    randomCorner.innerText = 'O';
-    randomCorner.click();
-    wholeGameContainer.classList.remove('disabled');
-    return;
-  }
-
-  // Play random edge square if available
-  const edgeTiles = [topCenterTile, leftCenterTile, rightCenterTile, bottomCenterTile];
-  const unoccupiedEdges = edgeTiles.filter(tile => !tile.classList.contains('active'));
-  if (unoccupiedEdges.length > 0) {
-    const randomEdge = unoccupiedEdges[Math.floor(Math.random() * unoccupiedEdges.length)];
-    randomEdge.innerText = 'O';
-    randomEdge.click();
-    wholeGameContainer.classList.remove('disabled');
-    return;
-  }
-}
-*/
