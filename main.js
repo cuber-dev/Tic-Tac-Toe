@@ -341,7 +341,6 @@ function fireUpMax() {
 
 
 
-
 /* ==========================  Game functions =================================================== */
 
 
@@ -603,7 +602,7 @@ function loadDefaultPage(){
 
 window.addEventListener('DOMContentLoaded', () => {
   loadDefaultPage();
-  //loadLoader(4);
+  loadLoader(4);
 });
 
 
