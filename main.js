@@ -112,6 +112,7 @@ function loadSecondPage(){
   firstPage.classList.remove('show');
   lastPage.classList.remove('show');
   loadLoader();
+  resetFeilds();
   resetGame();
   resetScores();
   secondPage.classList.add('show');
@@ -185,6 +186,17 @@ namesForm.addEventListener('submit', (e) => {
   loadLastPage();
 });
 
+/* ============================ Reset fields ================================================= */
+
+function resetFeilds(){
+  firstPlayerNameInput.value = '';
+  secondPlayerNameInput.value = '';
+  
+  secondPlayerContainer.classList.remove('disabled');
+  secondPlayerNameInput.disabled = false;
+
+  maxPlayer.checked = false;
+}
 
 
 /* ============================================================================= */
@@ -247,6 +259,7 @@ async function setGamePlayerDetails(){
   playerName2.innerText = globalSecondPlayerName;
 }
 /* ==========================  Max functions =================================================== */
+
 function fireUpMax() {
   let topLeft = boardTiles[0];
   let bottomLeft = boardTiles[2];
@@ -334,11 +347,33 @@ function fireUpMax() {
       setTimeout(() => bottomRight.click(), 400);
     }
   }
-
+//  boardTilesForMax()
   setTimeout(() => wholeGameContainer.classList.remove('disabled'), 400);
 }
 
+function boardTilesForMax(){
+  const newBoardTiles = document.createElement('div');
+  const tiles = boardTiles.map(tile => tile.cloneNode(true));
+  tiles.forEach(tile => newBoardTiles.append(tile));
 
+  let availableTiles = [];
+  
+  availableTiles.push( Array.from(tiles).filter((tile, i) => {
+    if(!tile.classList.contains('active')){
+      return { i : tile }
+    }
+  }))
+
+  console.log(availableTiles)
+//  checkNextMatch()
+  
+}
+function checkNextMatch(i,j,k , newBoardTiles){
+  if (newBoardTiles[i-1].innerText === currentPlayerSymbol && newBoardTiles[j-1].innerText === currentPlayerSymbol && newBoardTiles[k-1].innerText === currentPlayerSymbol) {
+    return true;
+  }
+  return false;
+}
 
 
 /* ==========================  Game functions =================================================== */
@@ -602,7 +637,7 @@ function loadDefaultPage(){
 
 window.addEventListener('DOMContentLoaded', () => {
   loadDefaultPage();
-  loadLoader(4);
+ // loadLoader(4);
 });
 
 
