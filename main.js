@@ -447,7 +447,7 @@ function checkDiagnols(){
    return checkMatchof(1,5,9) || checkMatchof(3,5,7);
 }
 function checkMatchof(i,j,k){
-  if (boardTiles[i-1].innerText === currentPlayerSymbol && boardTiles[j-1].innerText === currentPlayerSymbol && boardTiles[k-1].innerText === currentPlayerSymbol) {
+  if ([i-1, j-1, k-1].every(idx => boardTiles[idx].innerText === currentPlayerSymbol)) {
     isTie = false;
     addWinClass(boardTiles[i-1],boardTiles[j-1],boardTiles[k-1]);
     isGameOver = true;
