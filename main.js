@@ -15,7 +15,7 @@ function loadMessage(message){
   document.body.append(messageText);
   setTimeout(() => {
     messageText.remove();
-  },1000 * 3);
+  },1000 * 1.5);
 }
 
 // First page elements 
