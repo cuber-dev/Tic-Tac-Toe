@@ -1,6 +1,6 @@
 // Loader
 const loader = document.querySelector('.loader-container');
-function loadLoader(delay = 3){
+function loadLoader(delay = 1.5){
   loader.classList.add('show');
   setTimeout(() => {
    loader.classList.remove('show');
@@ -205,7 +205,7 @@ function resetFeilds(){
 function loadLastPage(){
   secondPage.classList.remove('show');
   firstPage.classList.remove('show');
-  loadLoader(2);
+  loadLoader();
   lastPage.classList.add('show');
   setGamePlayerDetails();
 }
@@ -557,7 +557,7 @@ navCloseBtn.addEventListener('click',closeNavBar);
 
 function loadDynamicPage(page){
     page.classList.add('show');
-    loadLoader(2);
+    loadLoader();
     lastPage.classList.remove('show');
 }
 
@@ -637,7 +637,7 @@ function loadDefaultPage(){
 
 window.addEventListener('DOMContentLoaded', () => {
   loadDefaultPage();
- // loadLoader(4);
+  loadLoader(2.5);
 });
 
 
