@@ -508,10 +508,12 @@ function checkGameOver(gameOver){
 
 function resetGame(){
   wholeGameContainer.classList.remove('disabled');
+ 
   boardTiles.forEach(tile => {
     tile.classList.remove('active');
     tile.innerText = '';
   });
+  
   currentPlayerSymbol = 'X';
   playerTurnIndicator.innerText = currentPlayerSymbol + '-Turn';
   playerContainer1.classList.add('active');
@@ -567,12 +569,15 @@ function checkIds(e){
     switch(children.id){
       case 'home':
         loadDynamicPage(firstPage);
+        loadMessage('Home');
         break;
       case 'edit':
         loadDynamicPage(secondPage);
+        loadMessage('Players Page')
         break;
       case 'reset':
         resetGame();
+        loadMessage('Board resettled');
         break;
       default :
         return;
