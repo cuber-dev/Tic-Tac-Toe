@@ -608,7 +608,7 @@ function addClickLabel(e){
 
 function playMelodySound(e){
   let children = e.target;
-  let possibleElemnts = ['button','label','li'];
+  let possibleElemnts = ['button','label','li','i'];
   if(possibleElemnts.includes(children.tagName.toLowerCase()) || children.matches('.tile')){
     document.querySelector('audio').remove();
     const audio = document.createElement('audio');
