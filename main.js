@@ -261,7 +261,7 @@ async function setGamePlayerDetails(){
 /* ==========================  Max functions =================================================== */
 
 function fireUpMax() {
-  let topLeft = boardTiles[0];
+  /*let topLeft = boardTiles[0];
   let bottomLeft = boardTiles[2];
   let topRight = boardTiles[6];
   let bottomRight = boardTiles[8];
@@ -346,6 +346,16 @@ function fireUpMax() {
     } else {
       setTimeout(() => bottomRight.click(), 400);
     }
+  }*/
+  let availableTile = '';
+  while(true){
+    availableTile = boardTiles[Math.floor(Math.random() * boardTiles.length)];
+    if(!availableTile.classList.contains('active')){
+      setTimeout(() => availableTile.click(), 400);
+
+      break;
+    }
+    
   }
 //  boardTilesForMax()
   setTimeout(() => wholeGameContainer.classList.remove('disabled'), 400);
