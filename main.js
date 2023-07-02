@@ -520,7 +520,7 @@ function resetGame(){
   wholeGameContainer.classList.remove('disabled');
  
   boardTiles.forEach(tile => {
-    tile.classList.remove('active');
+    tile.classList.remove('active','X','O');
     tile.innerText = '';
   });
   
