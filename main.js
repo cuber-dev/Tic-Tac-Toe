@@ -75,6 +75,7 @@ const scoreTie = document.querySelector('#score-tie');
 const scoreName2 = document.querySelector('#score-name-2');
 const scoreWin2 = document.querySelector('#score-win-2');
 
+const totalMatches = document.querySelector('#total-matches')
 /* ============================================================================= */
 
 /* ========================= Global variables ============================== */
@@ -102,6 +103,7 @@ let tieMatchImg = 'matchTie.png';
 let tieGreetings = ['Well played! It\'s always impressive to see two players evenly matched.','Congratulations on a great game! It\'s amazing how evenly matched you two are.','Wow, what a close match! You both played incredibly well.','That was an exciting game, you both deserve recognition for your skills.','Great effort from both sides! A tie was the perfect result for such a close match.'];
 let tieCount = 0;
 
+let matchesPlayed = 0
 /* ============================================================================= */
 
 
@@ -517,6 +519,7 @@ function checkGameOver(gameOver){
 }
 
 function resetGame(){
+  
   wholeGameContainer.classList.remove('disabled');
  
   boardTiles.forEach(tile => {
@@ -539,11 +542,13 @@ function loadScoreTable(passedSymbol){
   scoreName2.innerText = globalSecondPlayerName;
   if(passedSymbol === 'X') globalFirstPlayerWinCount++;
   else if(passedSymbol === 'O') globalSecondPlayerWinCount++;
-
+  
   scoreWin1.innerText = globalFirstPlayerWinCount;
   scoreWin2.innerText = globalSecondPlayerWinCount;
   
   scoreTie.innerText = tieCount;
+  
+  totalMatches.innerText = ++matchesPlayed
 }
 function resetScores(){
   globalFirstPlayerWinCount = 0;
