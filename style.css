@@ -458,6 +458,8 @@ img.show{
   }
 }
 
+
+
 .last-page.play-ground .whole-game-container .board-container .tile.active,
 .last-page.play-ground .whole-game-container .board-container .tile:hover{
   opacity: 1;
@@ -472,6 +474,9 @@ img.show{
 .last-page.play-ground .whole-game-container .board-container .tile.O:hover {
   background: var(--O);
 }
+
+
+
 .last-page.play-ground #nav-btn{
   position: absolute;
   top: 1rem;
