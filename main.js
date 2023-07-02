@@ -392,9 +392,9 @@ function checkNextMatch(i,j,k , newBoardTiles){
 function handleTile(tile,symbol){
   if(!tile.classList.contains('active')){
 
-    tile.classList.add('active');
+    tile.classList.add('active', symbol);
     tile.innerText = symbol;
-   
+    
     if(checkForWin()){
       wholeGameContainer.classList.add('disabled');
       setTimeout(() => {
@@ -428,11 +428,11 @@ function handleTile(tile,symbol){
 }
 function isCurrentPlayer(passedSymbol){
   if(passedSymbol === 'X'){
-    playerContainer1.classList.add('active');
+    playerContainer1.classList.add('active',passedSymbol);
     playerContainer2.classList.remove('active');
    } 
    else {
-    playerContainer2.classList.add('active');
+    playerContainer2.classList.add('active',passedSymbol);
     playerContainer1.classList.remove('active');
     if(maxStatus) checkGameOver(isGameOver);
    }
@@ -645,7 +645,7 @@ document.addEventListener('click',(e) => {
 
 
 function loadDefaultPage(){
-  firstPage.classList.add('show');
+   firstPage.classList.add('show');
   secondPage.classList.remove('show');
   lastPage.classList.remove('show');
 }

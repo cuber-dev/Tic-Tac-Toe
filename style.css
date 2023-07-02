@@ -31,6 +31,10 @@ body {
   --white : #fff;
   --black : #000;
   --active : rgb(47, 121, 96);
+  /*--X : #248EDD;
+  --O : #CE2B7A;*/
+  --X: #469AD7;
+  --O: #D43F7F;
 }
 .touchLabel{
   position: fixed;
@@ -383,9 +387,6 @@ img.show{
   justify-content: end;
 }
 
-.last-page.play-ground .players-display-container .player-display.active{
-  background-color: #256C54 ;
-}
 .last-page.play-ground .players-display-container .player-display.won{
   background-color: var(--theme-2);
   color: black;
@@ -461,7 +462,16 @@ img.show{
 .last-page.play-ground .whole-game-container .board-container .tile:hover{
   opacity: 1;
 }
-
+.last-page.play-ground .players-display-container .player-display.active.X,
+.last-page.play-ground .whole-game-container .board-container .tile.active.X,
+.last-page.play-ground .whole-game-container .board-container .tile.X:hover {
+  background: var(--X) ;
+}
+.last-page.play-ground .players-display-container .player-display.active.O,
+.last-page.play-ground .whole-game-container .board-container .tile.active.O,
+.last-page.play-ground .whole-game-container .board-container .tile.O:hover {
+  background: var(--O);
+}
 .last-page.play-ground #nav-btn{
   position: absolute;
   top: 1rem;
