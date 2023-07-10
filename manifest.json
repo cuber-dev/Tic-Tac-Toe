@@ -1,0 +1,16 @@
+{
+  "name" : "Tic-Tac-Toe",
+  "short_name" : "ticTacToe",
+  "start_url" : "/index.html",
+  "display" : "standalone",
+  "orientation" : "portrait",
+  "background_color" : "#48b198",
+  "theme_color" : "#e7e42f",
+  "icons" : [
+    {
+      "src" : "/logo.png",
+      "type" : "image/png",
+      "size" : "100x100"
+    }
+  ]
+}
