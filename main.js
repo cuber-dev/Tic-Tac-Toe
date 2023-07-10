@@ -657,7 +657,7 @@ function loadDefaultPage(){
 
 window.addEventListener('DOMContentLoaded', () => {
   loadDefaultPage();
-  loadLoader(2.5);
+  loadLoader(2);
 });
 
 
