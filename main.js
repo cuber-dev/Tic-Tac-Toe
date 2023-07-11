@@ -554,6 +554,7 @@ function resetScores(){
   globalFirstPlayerWinCount = 0;
   globalSecondPlayerWinCount = 0;
   tieCount = 0;
+  matchesPlayed = 0;
   scoreWin1.innerText = globalFirstPlayerWinCount;
   scoreWin2.innerText = globalSecondPlayerWinCount;
   
