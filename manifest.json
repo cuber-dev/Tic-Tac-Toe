@@ -1,6 +1,6 @@
 {
-  "name" : "Tic-Tac-Toe",
-  "short_name" : "ticTacToe",
+  "name" : "Tic Tac Toe",
+  "short_name" : "TicTacToe",
   "start_url" : "./index.html",
   "display" : "standalone",
   "orientation" : "portrait",
